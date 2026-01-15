@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Irina Glazún | Marketing Digital para PyMES</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style type="text/tailwindcss">
+        :root {
+            --primary-color: #8B5E3C;
+            --secondary-color: #D4B499;
+            --accent-color: #E67E22;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#8B5E3C",
+                        secondary: "#D4B499",
+                        accent: "#E67E22",
+                        "background-light": "#FDFBF7",
+                        "background-dark": "#1C1917",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#292524",
+                        "text-light": "#4A4036",
+                        "text-dark": "#E7E5E4",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Plus Jakarta Sans", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                        'xl': "1rem",
+                        '2xl': "1.5rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(139, 94, 60, 0.1)',
+                    }
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-body transition-colors duration-300">
+<nav class="fixed w-full z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-secondary/20 dark:border-white/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-20 items-center">
+<div class="flex-shrink-0 flex items-center">
+<span class="font-display font-bold text-2xl tracking-tight text-primary dark:text-secondary uppercase">
+                        irina glaz<span class="lowercase">ú</span>n<span class="text-accent">.</span>
+</span>
+</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors" href="#about">Sobre mí</a>
+<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors" href="#methodology">Metodología</a>
+<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors" href="#services">Servicios</a>
+<a class="px-6 py-2.5 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg shadow-primary/30 font-medium" href="#contact">Hablemos</a>
+</div>
+</div>
+</div>
+</nav>
+<section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-secondary/10 dark:bg-secondary/5 rounded-l-full blur-3xl transform translate-x-1/3"></div>
+<div class="absolute bottom-0 left-0 w-1/3 h-1/2 bg-primary/10 dark:bg-primary/5 rounded-r-full blur-3xl transform -translate-x-1/4"></div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center px-4 py-2 bg-secondary/20 dark:bg-secondary/10 rounded-full text-primary dark:text-secondary text-sm font-semibold tracking-wide uppercase">
+<span class="w-2 h-2 rounded-full bg-accent mr-2"></span>
+                        Marketing para PyMES
+                    </div>
+<h1 class="font-display text-5xl lg:text-7xl font-bold leading-tight text-text-light dark:text-white">
+                        Ayudo a pequeños negocios a <span class="text-primary dark:text-secondary italic">conseguir clientes</span>
+</h1>
+<p class="text-lg text-text-light/80 dark:text-text-dark/80 max-w-lg leading-relaxed">
+                        Transformo tu inversión digital en resultados medibles. Sin jerga técnica, sin agencias impersonales. Estrategia real para crecimiento real.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<a class="px-8 py-4 bg-[#25D366] text-white text-lg font-bold rounded-full shadow-xl shadow-green-500/20 hover:transform hover:-translate-y-1 transition-all text-center flex items-center justify-center gap-3" href="https://wa.me/#" target="_blank">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.319 1.592 5.448 0 9.886-4.438 9.889-9.886.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.735-.98zm11.367-7.403c-.315-.158-1.86-.918-2.149-1.023-.289-.105-.499-.158-.709.158-.21.316-.814 1.023-1 1.234-.185.211-.37.237-.685.079-.315-.158-1.33-.49-2.532-1.562-.936-.834-1.567-1.865-1.751-2.181-.184-.315-.02-.485.138-.642.142-.142.315-.368.473-.553.158-.185.21-.316.316-.526.105-.211.052-.395-.026-.553-.079-.158-.709-1.71-.971-2.342-.254-.616-.511-.533-.709-.543-.182-.008-.394-.01-.605-.01-.21 0-.552.079-.841.395-.289.316-1.104 1.079-1.104 2.632 0 1.553 1.131 3.052 1.288 3.263.158.211 2.227 3.4 5.397 4.766.753.325 1.341.519 1.8.663.758.241 1.448.207 1.993.126.608-.09 1.86-.763 2.122-1.474.262-.711.262-1.316.184-1.447-.078-.131-.289-.21-.604-.368z"></path></svg>
+                            Contáctame por Whatsapp
+                        </a>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-4 bg-secondary/20 dark:bg-secondary/10 rounded-2xl rotate-3 transform transition-transform duration-500 hover:rotate-6"></div>
+<div class="relative rounded-2xl overflow-hidden shadow-2xl">
+<img alt="Irina Glazún - Consultora de marketing digital" class="w-full object-cover aspect-video transform hover:scale-105 transition-transform duration-700" src="landing.png"/>
+</div>
+<div class="absolute bottom-8 -left-6 bg-white dark:bg-surface-dark p-4 rounded-xl shadow-lg flex items-center gap-4 animate-bounce duration-[3000ms]">
+<div class="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center text-accent">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<div>
+<p class="text-xs text-text-light/60 dark:text-text-dark/60 font-medium">ROAS Promedio</p>
+<p class="text-xl font-bold text-primary dark:text-white">4.5x</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-white dark:bg-surface-dark relative">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="font-display text-4xl font-bold mb-4 text-text-light dark:text-white">¿Te suena familiar?</h2>
+<p class="text-text-light/70 dark:text-text-dark/70 max-w-2xl mx-auto text-lg">
+                    Muchos dueños de negocio se sienten perdidos en el mundo digital. Identifiquemos si estás pasando por esto.
+                </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="group bg-background-light dark:bg-background-dark p-8 rounded-2xl shadow-soft border border-transparent hover:border-secondary/30 transition-all relative overflow-hidden">
+<div class="absolute right-0 top-0 w-24 h-24 bg-red-100 dark:bg-red-900/20 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-lg flex items-center justify-center text-red-600 dark:text-red-400 mb-6 relative z-10">
+<span class="material-symbols-outlined">sentiment_dissatisfied</span>
+</div>
+<h3 class="font-display text-xl font-bold mb-3 dark:text-white">Tráfico sin ventas</h3>
+<p class="text-text-light/70 dark:text-text-dark/70 leading-relaxed">
+                        Tienes visitas en tu web, likes en redes sociales, pero la caja registradora no suena. Los "vanity metrics" no pagan facturas.
+                    </p>
+</div>
+<div class="group bg-background-light dark:bg-background-dark p-8 rounded-2xl shadow-soft border border-transparent hover:border-secondary/30 transition-all relative overflow-hidden">
+<div class="absolute right-0 top-0 w-24 h-24 bg-orange-100 dark:bg-orange-900/20 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center text-orange-600 dark:text-orange-400 mb-6 relative z-10">
+<span class="material-symbols-outlined">visibility_off</span>
+</div>
+<h3 class="font-display text-xl font-bold mb-3 dark:text-white">Agencias 'Caja Negra'</h3>
+<p class="text-text-light/70 dark:text-text-dark/70 leading-relaxed">
+                        Pagas una iguala mensual pero no sabes qué están haciendo realmente. Reportes confusos y cero explicaciones claras.
+                    </p>
+</div>
+<div class="group bg-background-light dark:bg-background-dark p-8 rounded-2xl shadow-soft border border-transparent hover:border-secondary/30 transition-all relative overflow-hidden">
+<div class="absolute right-0 top-0 w-24 h-24 bg-yellow-100 dark:bg-yellow-900/20 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+<div class="w-12 h-12 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg flex items-center justify-center text-yellow-600 dark:text-yellow-400 mb-6 relative z-10">
+<span class="material-symbols-outlined">money_off</span>
+</div>
+<h3 class="font-display text-xl font-bold mb-3 dark:text-white">Desconocimiento del gasto</h3>
+<p class="text-text-light/70 dark:text-text-dark/70 leading-relaxed">
+                        Sientes que estás tirando dinero en anuncios de Google o Meta sin entender cuál es el retorno real de cada euro invertido.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 lg:py-28 overflow-hidden" id="about">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="order-2 lg:order-1 relative">
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-secondary/30 dark:bg-secondary/10 rounded-full blur-3xl"></div>
+<h2 class="font-display text-4xl lg:text-5xl font-bold mb-6 text-text-light dark:text-white">Más que una consultora, <span class="text-primary dark:text-secondary">tu aliada estratégica.</span></h2>
+<p class="text-lg text-text-light/80 dark:text-text-dark/80 mb-8 leading-relaxed">
+                        Con 7 años de experiencia navegando el ecosistema digital, he ayudado a más de 50 pequeños negocios a escalar. Mi enfoque combina la calidez humana con la frialdad de los datos.
+                    </p>
+<div class="grid grid-cols-2 gap-6 mb-10">
+<div class="p-6 bg-white dark:bg-surface-dark rounded-xl shadow-sm border-l-4 border-accent">
+<h4 class="text-3xl font-bold text-text-light dark:text-white mb-1">7+</h4>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60 font-medium uppercase tracking-wider">Años de experiencia</p>
+</div>
+<div class="p-6 bg-white dark:bg-surface-dark rounded-xl shadow-sm border-l-4 border-primary">
+<h4 class="text-3xl font-bold text-text-light dark:text-white mb-1">-40%</h4>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60 font-medium uppercase tracking-wider">Reducción de CAC</p>
+</div>
+<div class="p-6 bg-white dark:bg-surface-dark rounded-xl shadow-sm border-l-4 border-secondary">
+<h4 class="text-3xl font-bold text-text-light dark:text-white mb-1">300%</h4>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60 font-medium uppercase tracking-wider">Aumento de ROAS</p>
+</div>
+<div class="p-6 bg-white dark:bg-surface-dark rounded-xl shadow-sm border-l-4 border-teal-500">
+<h4 class="text-3xl font-bold text-text-light dark:text-white mb-1">100%</h4>
+<p class="text-sm text-text-light/60 dark:text-text-dark/60 font-medium uppercase tracking-wider">Transparencia</p>
+</div>
+</div>
+<a class="inline-flex items-center px-8 py-3 bg-primary text-white font-bold rounded-full hover:bg-opacity-90 transition-all shadow-lg shadow-primary/20" href="#contact">
+                        ¿Quieres ser mi próximo cliente?
+                    </a>
+</div>
+<div class="order-1 lg:order-2 relative">
+<div class="absolute top-1/2 left-1/2 w-full h-full transform -translate-x-1/2 -translate-y-1/2 bg-secondary/20 dark:bg-secondary/10 rounded-full blur-2xl -z-10"></div>
+<img alt="Retrato profesional Irina Glazún" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto object-cover aspect-[3/4] border-8 border-white dark:border-surface-dark transform -rotate-2 hover:rotate-0 transition-transform duration-500" src="landing-2.png"/>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-primary dark:bg-surface-dark text-white relative overflow-hidden" id="methodology">
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
+<div class="absolute -top-24 -right-24 w-96 h-96 border-4 border-white rounded-full"></div>
+<div class="absolute bottom-10 left-10 w-24 h-24 bg-white rounded-full"></div>
+</div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="text-center mb-16">
+<span class="text-secondary uppercase tracking-widest font-semibold text-sm">El Proceso</span>
+<h2 class="font-display text-4xl font-bold mt-2">Mi Metodología</h2>
+<p class="text-white/70 max-w-2xl mx-auto mt-4">Un enfoque estructurado para eliminar la incertidumbre y garantizar resultados.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="relative group">
+<div class="w-16 h-16 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center mb-6 group-hover:bg-white group-hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">search</span>
+</div>
+<h3 class="text-xl font-bold mb-3">1. Auditoría</h3>
+<p class="text-white/70 text-sm leading-relaxed">
+                        Analizamos tu situación actual, tu competencia y tus activos digitales para encontrar fugas de dinero y oportunidades.
+                    </p>
+<div class="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-white/30 to-transparent -ml-4 z-0"></div>
+</div>
+<div class="relative group">
+<div class="w-16 h-16 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center mb-6 group-hover:bg-white group-hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">rocket_launch</span>
+</div>
+<h3 class="text-xl font-bold mb-3">2. Acción</h3>
+<p class="text-white/70 text-sm leading-relaxed">
+                        Implementamos la estrategia: configuración de campañas, optimización de landing pages y configuración de tracking.
+                    </p>
+<div class="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-white/30 to-transparent -ml-4 z-0"></div>
+</div>
+<div class="relative group">
+<div class="w-16 h-16 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center mb-6 group-hover:bg-white group-hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">bar_chart</span>
+</div>
+<h3 class="text-xl font-bold mb-3">3. Medición</h3>
+<p class="text-white/70 text-sm leading-relaxed">
+                        Monitoreo constante. Lo que no se mide, no se puede mejorar. Recibes reportes claros y accionables.
+                    </p>
+<div class="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-gradient-to-r from-white/30 to-transparent -ml-4 z-0"></div>
+</div>
+<div class="relative group">
+<div class="w-16 h-16 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/20 flex items-center justify-center mb-6 group-hover:bg-white group-hover:text-primary transition-all duration-300">
+<span class="material-symbols-outlined text-3xl">loop</span>
+</div>
+<h3 class="text-xl font-bold mb-3">4. Optimización</h3>
+<p class="text-white/70 text-sm leading-relaxed">
+                        Ciclo de mejora continua basado en datos reales para maximizar el retorno de inversión y escalar.
+                    </p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 lg:py-28" id="services">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="mb-16">
+<h2 class="font-display text-4xl font-bold text-text-light dark:text-white mb-6">Soluciones a medida</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-8 bg-white dark:bg-surface-dark rounded-2xl shadow-soft hover:shadow-xl transition-shadow border-t-4 border-primary">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<h3 class="text-xl font-bold text-text-light dark:text-white mb-2">Paid Media</h3>
+<p class="text-text-light/60 dark:text-text-dark/60 text-sm">Gestión experta de Google Ads, Meta Ads y LinkedIn Ads para captar clientes cualificados.</p>
+</div>
+<div class="p-8 bg-white dark:bg-surface-dark rounded-2xl shadow-soft hover:shadow-xl transition-shadow border-t-4 border-secondary">
+<div class="w-10 h-10 bg-secondary/20 rounded-full flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<h3 class="text-xl font-bold text-text-light dark:text-white mb-2">E-commerce</h3>
+<p class="text-text-light/60 dark:text-text-dark/60 text-sm">Estrategias full-funnel para tiendas online. Recuperación de carritos y aumento del ticket medio.</p>
+</div>
+<div class="p-8 bg-white dark:bg-surface-dark rounded-2xl shadow-soft hover:shadow-xl transition-shadow border-t-4 border-accent">
+<div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center text-accent mb-4">
+<span class="material-symbols-outlined">filter_alt</span>
+</div>
+<h3 class="text-xl font-bold text-text-light dark:text-white mb-2">Lead Gen</h3>
+<p class="text-text-light/60 dark:text-text-dark/60 text-sm">Sistemas automatizados de captación de leads para servicios profesionales y B2B.</p>
+</div>
+<div class="p-8 bg-white dark:bg-surface-dark rounded-2xl shadow-soft hover:shadow-xl transition-shadow border-t-4 border-text-light">
+<div class="w-10 h-10 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 mb-4">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h3 class="text-xl font-bold text-text-light dark:text-white mb-2">Estrategia 360º</h3>
+<p class="text-text-light/60 dark:text-text-dark/60 text-sm">Consultoría integral para alinear ventas y marketing. Definición de buyer persona y customer journey.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-background-light dark:bg-background-dark overflow-hidden" id="packs">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<span class="text-accent uppercase tracking-widest font-semibold text-sm">Planes</span>
+<h2 class="font-display text-4xl font-bold mt-2 text-text-light dark:text-white">Packs de Gestión</h2>
+<p class="text-text-light/70 dark:text-text-dark/70 max-w-2xl mx-auto mt-4">Transparencia desde el primer día con opciones adaptadas a tu volumen de negocio.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+<div class="bg-white dark:bg-surface-dark p-10 rounded-3xl shadow-soft border border-secondary/20 hover:border-primary/40 transition-all flex flex-col">
+<div class="mb-8">
+<h3 class="font-display text-2xl font-bold text-text-light dark:text-white mb-4 text-center">Standard</h3>
+<div class="flex items-center justify-center gap-1">
+<span class="text-4xl font-bold text-primary">200€</span>
+<span class="text-text-light/60 dark:text-text-dark/60">/mes</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Gestión integral de 1 plataforma (Meta o Google)</span>
+</li>
+<li class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Setup de conversiones avanzado</span>
+</li>
+<li class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Reporte mensual de resultados</span>
+</li>
+<li class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+<span>Optimización semanal de campañas</span>
+</li>
+</ul>
+<a class="w-full py-4 bg-primary text-white font-bold rounded-xl text-center hover:bg-opacity-90 transition-all" href="#contact">Empezar ahora</a>
+</div>
+<div class="bg-white dark:bg-surface-dark p-10 rounded-3xl shadow-soft border border-secondary/20 hover:border-accent/40 transition-all flex flex-col relative overflow-hidden">
+<div class="absolute top-4 right-4 bg-accent/10 text-accent text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Más Popular</div>
+<div class="mb-8">
+<h3 class="font-display text-2xl font-bold text-text-light dark:text-white mb-4 text-center">Custom</h3>
+<div class="flex items-center justify-center gap-1">
+<span class="text-4xl font-bold text-accent">A medida</span>
+</div>
+</div>
+<ul class="space-y-4 mb-10 flex-grow">
+<li class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
+<span class="material-symbols-outlined text-accent text-xl">add_circle</span>
+<span>Estrategia Multi-canal (Google + Meta + LinkedIn)</span>
+</li>
+<li class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
+<span class="material-symbols-outlined text-accent text-xl">add_circle</span>
+<span>Dashboard en tiempo real (Looker Studio)</span>
+</li>
+<li class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
+<span class="material-symbols-outlined text-accent text-xl">add_circle</span>
+<span>Consultoría estratégica de negocio</span>
+</li>
+<li class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
+<span class="material-symbols-outlined text-accent text-xl">add_circle</span>
+<span>Escalado de presupuestos dinámico</span>
+</li>
+</ul>
+<a class="w-full py-4 bg-accent text-white font-bold rounded-xl text-center hover:bg-opacity-90 transition-all" href="#contact">Solicitar presupuesto</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-10 bg-white dark:bg-surface-dark">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<p class="text-center text-sm font-semibold uppercase tracking-widest text-text-light/40 dark:text-text-dark/40 mb-8">Tecnología &amp; Herramientas</p>
+<div class="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400"><span class="material-symbols-outlined">ads_click</span> Google Ads</div>
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400"><span class="material-symbols-outlined">social_leaderboard</span> Meta Ads</div>
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400"><span class="material-symbols-outlined">analytics</span> GA4</div>
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400"><span class="material-symbols-outlined">data_usage</span> Looker</div>
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400"><span class="material-symbols-outlined">mail</span> HubSpot</div>
+<div class="flex items-center gap-2 text-xl font-bold text-gray-600 dark:text-gray-400"><span class="material-symbols-outlined">shopping_cart</span> Shopify</div>
+</div>
+</div>
+</section>
+<section class="bg-background-light dark:bg-background-dark py-20 relative overflow-hidden" id="contact">
+<div class="absolute right-0 bottom-0 w-1/3 h-full bg-secondary/20 dark:bg-secondary/5 rounded-tl-full blur-3xl pointer-events-none"></div>
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<div class="bg-white dark:bg-surface-dark rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
+<div class="p-10 md:p-12 md:w-1/2 flex flex-col justify-center">
+<span class="text-accent font-bold tracking-wider uppercase text-sm mb-2">Contacto</span>
+<h2 class="font-display text-3xl md:text-4xl font-bold text-text-light dark:text-white mb-6">¿Hablamos de tus objetivos?</h2>
+<p class="text-text-light/70 dark:text-text-dark/70 mb-8">
+                        Reserva una auditoría inicial de 15 minutos. Sin coste, sin compromiso, solo valor desde el primer minuto.
+                    </p>
+<div class="space-y-4">
+<div class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>No cobro por consultar</span>
+</div>
+<div class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<span>Respuesta en menos de 24h</span>
+</div>
+</div>
+</div>
+<div class="bg-primary/5 dark:bg-black/20 p-10 md:p-12 md:w-1/2 flex flex-col justify-center">
+<form class="space-y-4">
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="name">Nombre</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-surface-dark dark:text-white shadow-sm focus:border-primary focus:ring-primary" id="name" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="email">Email</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-surface-dark dark:text-white shadow-sm focus:border-primary focus:ring-primary" id="email" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="website">Sitio Web</label>
+<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-surface-dark dark:text-white shadow-sm focus:border-primary focus:ring-primary" id="website" type="url"/>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-4 rounded-lg shadow-lg transition-colors mt-4" type="button">
+                            Solicitar Auditoría
+                        </button>
+</form>
+</div>
+</div>
+<div class="mt-12 flex flex-col md:flex-row justify-between items-center text-sm text-text-light/40 dark:text-text-dark/40">
+<p>© 2023 Irina Glazún. Todos los derechos reservados.</p>
+<div class="flex gap-4 mt-4 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
+<a class="hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="hover:text-primary transition-colors" href="#">Email</a>
+</div>
+</div>
+</div>
+</section>
+
+</body></html>
