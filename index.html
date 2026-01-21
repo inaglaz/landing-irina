@@ -384,55 +384,67 @@
 </div>
 </section>
 <section class="bg-background-light dark:bg-background-dark py-20 relative overflow-hidden" id="contact">
-<div class="absolute right-0 bottom-0 w-1/3 h-full bg-secondary/20 dark:bg-secondary/5 rounded-tl-full blur-3xl pointer-events-none"></div>
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-<div class="bg-white dark:bg-surface-dark rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
-<div class="p-10 md:p-12 md:w-1/2 flex flex-col justify-center">
-<span class="text-accent font-bold tracking-wider uppercase text-sm mb-2">Contacto</span>
-<h2 class="font-display text-3xl md:text-4xl font-bold text-text-light dark:text-white mb-6">¿Hablamos de tus objetivos?</h2>
-<p class="text-text-light/70 dark:text-text-dark/70 mb-8">
-                        Reserva una auditoría inicial de 15 minutos. Sin coste, sin compromiso, solo valor desde el primer minuto.
-                    </p>
-<div class="space-y-4">
-<div class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>No cobro por consultar</span>
-</div>
-<div class="flex items-center gap-3 text-text-light/80 dark:text-text-dark/80">
-<span class="material-symbols-outlined text-primary">check_circle</span>
-<span>Respuesta en menos de 24h</span>
-</div>
-</div>
-</div>
-<div class="bg-primary/5 dark:bg-black/20 p-10 md:p-12 md:w-1/2 flex flex-col justify-center">
-<form class="space-y-4">
-<div>
-<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="name">Nombre</label>
-<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-surface-dark dark:text-white shadow-sm focus:border-primary focus:ring-primary" id="name" type="text"/>
-</div>
-<div>
-<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="email">Email</label>
-<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-surface-dark dark:text-white shadow-sm focus:border-primary focus:ring-primary" id="email" type="email"/>
-</div>
-<div>
-<label class="block text-sm font-medium text-text-light dark:text-text-dark mb-1" for="website">Sitio Web</label>
-<input class="w-full rounded-lg border-gray-300 dark:border-gray-600 bg-white dark:bg-surface-dark dark:text-white shadow-sm focus:border-primary focus:ring-primary" id="website" type="url"/>
-</div>
-<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 px-4 rounded-lg shadow-lg transition-colors mt-4" type="button">
-                            Solicitar Auditoría
-                        </button>
-</form>
-</div>
-</div>
-<div class="mt-12 flex flex-col md:flex-row justify-between items-center text-sm text-text-light/40 dark:text-text-dark/40">
-<p>© 2023 Irina Glazún. Todos los derechos reservados.</p>
-<div class="flex gap-4 mt-4 md:mt-0">
-<a class="hover:text-primary transition-colors" href="#">LinkedIn</a>
-<a class="hover:text-primary transition-colors" href="#">Instagram</a>
-<a class="hover:text-primary transition-colors" href="#">Email</a>
-</div>
-</div>
-</div>
+    <div class="absolute right-0 bottom-0 w-1/2 h-full bg-secondary/20 dark:bg-secondary/10 rounded-tl-full blur-3xl pointer-events-none"></div>
+    <div class="absolute left-0 top-20 w-64 h-64 bg-primary/10 dark:bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="bg-white/60 dark:bg-surface-dark/60 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 dark:border-white/10 overflow-hidden">
+            <div class="p-8 md:p-12">
+                <div class="text-center mb-10">
+                    <span class="text-accent font-bold tracking-wider uppercase text-sm mb-2 block">Dudas Frecuentes</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-text-light dark:text-white">Te resuelvo las dudas que sueles tener</h2>
+                </div>
+
+                <div class="space-y-4 mb-12 text-left">
+                    <details class="group bg-white/50 dark:bg-black/20 rounded-2xl border border-white/50 dark:border-white/5 overflow-hidden transition-all hover:bg-white/80 dark:hover:bg-black/30">
+                        <summary class="flex justify-between items-center p-5 cursor-pointer list-none text-text-light dark:text-white font-bold select-none">
+                            <span>¿Hay permanencia?</span>
+                            <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                        </summary>
+                        <div class="px-5 pb-5 text-sm text-text-light/70 dark:text-text-dark/70 leading-relaxed">
+                            No. Si no estás contento/a, no tiene sentido que sigas pagando. Eres libre de irte cuando quieras, sin letras pequeñas.
+                        </div>
+                    </details>
+                    <details class="group bg-white/50 dark:bg-black/20 rounded-2xl border border-white/50 dark:border-white/5 overflow-hidden transition-all hover:bg-white/80 dark:hover:bg-black/30">
+                        <summary class="flex justify-between items-center p-5 cursor-pointer list-none text-text-light dark:text-white font-bold select-none">
+                            <span>¿Cuánto tengo que invertir en anuncios?</span>
+                            <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                        </summary>
+                        <div class="px-5 pb-5 text-sm text-text-light/70 dark:text-text-dark/70 leading-relaxed">
+                            Tú decides el presupuesto. Yo te recomendaré el mínimo viable para tu sector para que sea rentable, pero el dinero de los anuncios lo pagas tú directamente a Google o Meta.
+                        </div>
+                    </details>
+                    <details class="group bg-white/50 dark:bg-black/20 rounded-2xl border border-white/50 dark:border-white/5 overflow-hidden transition-all hover:bg-white/80 dark:hover:bg-black/30">
+                        <summary class="flex justify-between items-center p-5 cursor-pointer list-none text-text-light dark:text-white font-bold select-none">
+                            <span>¿Cuándo veré resultados?</span>
+                            <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                        </summary>
+                        <div class="px-5 pb-5 text-sm text-text-light/70 dark:text-text-dark/70 leading-relaxed">
+                            Desde la primera semana verás movimiento (clics y visitas). La optimización completa para tener un flujo estable de clientes suele tomar entre 1 y 3 meses, dependiendo del sector.
+                        </div>
+                    </details>
+                    <details class="group bg-white/50 dark:bg-black/20 rounded-2xl border border-white/50 dark:border-white/5 overflow-hidden transition-all hover:bg-white/80 dark:hover:bg-black/30">
+                        <summary class="flex justify-between items-center p-5 cursor-pointer list-none text-text-light dark:text-white font-bold select-none">
+                            <span>¿Cómo nos comunicamos?</span>
+                            <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+                        </summary>
+                        <div class="px-5 pb-5 text-sm text-text-light/70 dark:text-text-dark/70 leading-relaxed">
+                            Sin tickets interminables ni esperas. Tendrás mi WhatsApp directo para dudas rápidas y agendaremos videollamadas mensuales para revisar los informes con calma.
+                        </div>
+                    </details>
+                </div>
+                <div class="text-center">
+                    <a class="inline-flex items-center px-8 py-4 bg-[#25D366] text-white text-lg font-bold rounded-full shadow-lg hover:shadow-green-500/30 hover:-translate-y-1 transition-all transform w-full md:w-auto justify-center" href="https://wa.me/34627252924?text=Hola,%20Irina,%20he%20visto%20tu%20web%20y%20quiero%20que%20hablemos..." target="_blank">
+                        <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.319 1.592 5.448 0 9.886-4.438 9.889-9.886.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.735-.98zm11.367-7.403c-.315-.158-1.86-.918-2.149-1.023-.289-.105-.499-.158-.709.158-.21.316-.814 1.023-1 1.234-.185.211-.37.237-.685.079-.315-.158-1.33-.49-2.532-1.562-.936-.834-1.567-1.865-1.751-2.181-.184-.315-.02-.485.138-.642.142-.142.315-.368.473-.553.158-.185.21-.316.316-.526.105-.211.052-.395-.026-.553-.079-.158-.709-1.71-.971-2.342-.254-.616-.511-.533-.709-.543-.182-.008-.394-.01-.605-.01-.21 0-.552.079-.841.395-.289.316-1.104 1.079-1.104 2.632 0 1.553 1.131 3.052 1.288 3.263.158.211 2.227 3.4 5.397 4.766.753.325 1.341.519 1.8.663.758.241 1.448.207 1.993.126.608-.09 1.86-.763 2.122-1.474.262-.711.262-1.316.184-1.447-.078-.131-.289-.21-.604-.368z"></path></svg>
+                        Escribir por WhatsApp
+                    </a>
+                    <p class="mt-4 text-xs text-text-light/50 dark:text-text-dark/50">Respuesta media: menos de 2 horas</p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-12 text-center text-sm text-text-light/40 dark:text-text-dark/40">
+            <p>© 2026 Irina Glazún. Todos los derechos reservados.</p>
+        </div>
+    </div>
 </section>
 
 </body></html>
