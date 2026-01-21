@@ -4,7 +4,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Irina Glazún | Marketing Digital para PyMES</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Rock+Salt&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style type="text/tailwindcss">
         :root {
@@ -35,6 +35,7 @@
                     fontFamily: {
                         display: ["Playfair Display", "serif"],
                         body: ["Plus Jakarta Sans", "sans-serif"],
+                        logo: ["Rock Salt"],
                     },
                     borderRadius: {
                         DEFAULT: "0.75rem",
@@ -50,23 +51,42 @@
     </script>
 </head>
 <body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-body transition-colors duration-300">
-<nav class="fixed w-full z-50 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-secondary/20 dark:border-white/10">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex justify-between h-20 items-center">
-<div class="flex-shrink-0 flex items-center">
-<span class="font-display font-bold text-2xl tracking-tight text-primary dark:text-secondary uppercase">
-                        irina glaz<span class="lowercase">ú</span>n<span class="text-accent">.</span>
-</span>
-</div>
-<div class="hidden md:flex space-x-8 items-center">
-<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors" href="#about">Sobre mí</a>
-<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors" href="#methodology">Metodología</a>
-<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors" href="#services">Servicios</a>
-<a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors" href="#packs">Precios</a>
-<a class="px-6 py-2.5 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg shadow-primary/30 font-medium" href="https://wa.me/34627252924?text=Hola,%20vengo%20de%20tu%20web%20y%20me%20gustar%C3%ADa..." target="_blank">Hablemos</a>
-</div>
-</div>
-</div>
+<nav class="fixed w-full z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-secondary/20 dark:border-white/10 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-20 items-center">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="#" class="font-logo text-2xl md:text-3xl text-primary dark:text-secondary hover:opacity-80 transition-opacity pt-2">
+                    Irina Glazún
+                </a>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors font-medium" href="#about">Sobre mí</a>
+                <a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors font-medium" href="#methodology">Metodología</a>
+                <a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors font-medium" href="#services">Servicios</a>
+                <a class="text-text-light dark:text-text-dark hover:text-primary dark:hover:text-secondary transition-colors font-medium" href="#packs">Precios</a>
+                <a class="px-6 py-2.5 bg-primary text-white rounded-full hover:bg-opacity-90 transition-all shadow-lg shadow-primary/30 font-medium flex items-center gap-2" href="https://wa.me/34627252924?text=Hola,%20vengo%20de%20tu%20web%20y%20me%20gustar%C3%ADa..." target="_blank">
+                    Hablemos
+                </a>
+            </div>
+            <div class="flex md:hidden items-center gap-4">
+                <a href="https://wa.me/34627252924?text=Hola,%20Irina..." target="_blank" class="w-10 h-10 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-md hover:scale-105 transition-transform">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.319 1.592 5.448 0 9.886-4.438 9.889-9.886.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.735-.98zm11.367-7.403c-.315-.158-1.86-.918-2.149-1.023-.289-.105-.499-.158-.709.158-.21.316-.814 1.023-1 1.234-.185.211-.37.237-.685.079-.315-.158-1.33-.49-2.532-1.562-.936-.834-1.567-1.865-1.751-2.181-.184-.315-.02-.485.138-.642.142-.142.315-.368.473-.553.158-.185.21-.316.316-.526.105-.211.052-.395-.026-.553-.079-.158-.709-1.71-.971-2.342-.254-.616-.511-.533-.709-.543-.182-.008-.394-.01-.605-.01-.21 0-.552.079-.841.395-.289.316-1.104 1.079-1.104 2.632 0 1.553 1.131 3.052 1.288 3.263.158.211 2.227 3.4 5.397 4.766.753.325 1.341.519 1.8.663.758.241 1.448.207 1.993.126.608-.09 1.86-.763 2.122-1.474.262-.711.262-1.316.184-1.447-.078-.131-.289-.21-.604-.368z"></path></svg>
+                </a>
+                <button id="mobile-menu-btn" class="text-text-light dark:text-text-dark hover:text-primary transition-colors focus:outline-none p-2">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white dark:bg-surface-dark border-b border-secondary/20 shadow-xl z-40">
+        <div class="px-4 py-6 space-y-4 flex flex-col items-center">
+            <a class="text-lg font-medium text-text-light dark:text-white hover:text-primary transition-colors" href="#about" onclick="toggleMenu()">Sobre mí</a>
+            <a class="text-lg font-medium text-text-light dark:text-white hover:text-primary transition-colors" href="#methodology" onclick="toggleMenu()">Metodología</a>
+            <a class="text-lg font-medium text-text-light dark:text-white hover:text-primary transition-colors" href="#services" onclick="toggleMenu()">Servicios</a>
+            <a class="text-lg font-medium text-text-light dark:text-white hover:text-primary transition-colors" href="#packs" onclick="toggleMenu()">Precios</a>
+            <a class="w-full py-3 bg-primary text-white text-center rounded-xl font-bold shadow-lg" href="#contact" onclick="toggleMenu()">Contacto</a>
+        </div>
+    </div>
 </nav>
 <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-32 overflow-hidden">
 <div class="absolute inset-0 z-0">
@@ -446,5 +466,20 @@
         </div>
     </div>
 </section>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    }
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', toggleMenu);
+window.addEventListener('scroll', () => {
+    const menu = document.getElementById('mobile-menu');
+    if (!menu.classList.contains('hidden')) {
+        menu.classList.add('hidden');
+    }
+});
+</script>
 
 </body></html>
