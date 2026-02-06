@@ -23,19 +23,89 @@
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "name": "Irina Glazún Marketing Digital",
-  "image": "https://raw.githubusercontent.com/inaglaz/landing-irina/main/landing.webp",
-  "description": "Consultora de marketing digital especializada en gestión de campañas publicitarias (PPC) para pequeñas y medianas empresas.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "ES"
-  },
-  "priceRange": "$$",
-  "offers": {
-    "@type": "Offer",
-    "name": "Gestión de Campañas Ads"
-  }
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "name": "Irina Glazún - Diseño Web Estratégico",
+      "image": "https://raw.githubusercontent.com/inaglaz/landing-irina/main/landing.webp",
+      "description": "Webs sencillas y creativas para pequeños negocios con alma. Especialista en diseño web, analítica (GA4) y estrategia digital.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "ES"
+      },
+      "priceRange": "450€ - 1500€",
+      "knowsAbout": [
+        "Diseño Web",
+        "Landing Pages",
+        "Google Analytics 4",
+        "SEO Técnico",
+        "Paid Media"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Plan Landing (Web One Page)"
+          },
+          "price": "450",
+          "priceCurrency": "EUR"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Plan Web Corporativa"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Tengo que pagar una cuota mensual de mantenimiento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Rotundamente no. Esa es la gran ventaja de mi tecnología. Al no usar plataformas pesadas (como WordPress) que requieren actualizaciones constantes de seguridad, tu web no necesita mantenimiento técnico mensual. Es segura, estable y no se rompe sola. Una vez entregada, no tienes costes ocultos conmigo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "No tengo los textos ni las fotos, ¿puedo empezar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "¡Claro! Parte de mi trabajo es ayudarte a estructurar el contenido. Yo te guiaré sobre qué fotos necesitamos y cómo enfocar los textos para que vendan. No estás sola ante la página en blanco; lo construimos juntas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto tardas en tener la web lista?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende del pack. Para el Plan Landing, solemos tardar unas 2 semanas desde que tenemos el material. Para el Plan Web, el proceso es más artesanal y suele llevar entre 3 y 4 semanas. Lo importante no es correr, sino que quede perfecta."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Podré cambiar cosas yo misma en el futuro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depende. Si necesitas una sección de \"Noticias\" o \"Agenda\" que cambie cada semana, te dejaré preparado un apartado específico fácil de usar. Pero para cambios puntuales (un precio, un teléfono...), escríbeme y yo te lo hago. Es mucho más rápido y seguro que intentar tocar el código tú misma y arriesgarte a desconfigurar el diseño."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué pasa con el dominio y el hosting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Buenas noticias: el alojamiento (hosting) suele ser 100% gratuito gracias a la tecnología que uso (Netlify), que ofrece un plan gratis muy generoso (hasta 100GB/mes, suficiente para la mayoría de negocios). Solo tendrás que pagar el dominio anual (aprox. 12€/año), que contrataremos a tu nombre con mi ayuda."
+          }
+        }
+      ]
+    }
+  ]
 }
 </script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
