@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M7KXQ24J');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <title>Briefing del Proyecto | Irina Glazún ✨</title>
+    <meta name="description" content="Cuéntame más sobre tu proyecto para que podamos crear una web con alma y estrategia."/>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Rock+Salt&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #8B5E3C;
+            --secondary-color: #D4B499;
+            --accent-color: #E67E22;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step { display: none; }
+        .step.active { display: block; }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#8B5E3C",
+                        secondary: "#D4B499",
+                        accent: "#E67E22",
+                        "background-light": "#FDFBF7",
+                        "background-dark": "#1C1917",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#292524",
+                        "text-light": "#4A4036",
+                        "text-dark": "#E7E5E4",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Plus Jakarta Sans", "sans-serif"],
+                        logo: ["Rock Salt"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                        'xl': "1rem",
+                        '2xl': "1.5rem",
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px -2px rgba(139, 94, 60, 0.1)',
+                    }
+                },
+            },
+        };
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-body transition-colors duration-300 min-h-screen">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7KXQ24J"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header class="w-full py-6 px-4 sm:px-6 lg:px-8 border-b border-secondary/20 dark:border-white/10">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <a href="index.html" class="font-logo text-2xl text-primary dark:text-secondary pt-2">Irina Glazún</a>
+        <a href="index.html" class="flex items-center gap-2 text-sm font-semibold text-text-light/60 dark:text-text-dark/60 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined text-lg">arrow_back</span>
+            Volver al inicio
+        </a>
+    </div>
+</header>
+
+<main class="max-w-3xl mx-auto px-4 py-12">
+    <div class="mb-10">
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-2xl font-display font-bold text-text-light dark:text-white">Briefing de tu proyecto</h1>
+            <span id="step-indicator" class="text-sm font-semibold text-primary/60 dark:text-secondary/60 uppercase tracking-widest">Paso 1 de 5</span>
+        </div>
+        <div class="w-full bg-secondary/20 dark:bg-white/10 h-2 rounded-full overflow-hidden">
+            <div id="progress-bar" class="bg-primary h-full transition-all duration-500 w-1/5"></div>
+        </div>
+    </div>
+
+    <div class="bg-white/60 dark:bg-surface-dark/60 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 dark:border-white/10 overflow-hidden">
+        <form name="briefing-cliente" method="POST" data-netlify="true" class="p-8 md:p-10">
+            <input type="hidden" name="form-name" value="briefing-cliente" />
+
+            <!-- Paso 1: Datos -->
+            <div class="step active" data-step="1">
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">Comencemos por lo básico</h2>
+                        <p class="text-text-light/70 dark:text-text-dark/70 text-sm mb-6">Necesito tus datos de contacto para poder responderte.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="nombre" class="block text-sm font-bold mb-1">Nombre completo</label>
+                            <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Ej: Maria García">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-bold mb-1">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="tu@email.com">
+                        </div>
+                        <div>
+                            <label for="telefono" class="block text-sm font-bold mb-1">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" required class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="+34 000 000 000">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 2: Identidad -->
+            <div class="step" data-step="2">
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">La esencia de tu negocio</h2>
+                        <p class="text-text-light/70 dark:text-text-dark/70 text-sm mb-6">Cuéntame qué haces y qué quieres conseguir.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="proposito" class="block text-sm font-bold mb-1">¿Cuál es el propósito principal de la web?</label>
+                            <input type="text" id="proposito" name="proposito" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Ej: App de finanzas, tienda de ropa, portfolio...">
+                        </div>
+                        <div>
+                            <label for="objetivo" class="block text-sm font-bold mb-1">Objetivo Principal</label>
+                            <select id="objetivo" name="objetivo" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary">
+                                <option value="vender">Vender</option>
+                                <option value="captar-leads">Captar leads</option>
+                                <option value="imagen-marca">Imagen de marca</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        <div id="objetivo-otro-container" class="hidden">
+                            <label for="objetivo-otro" class="block text-sm font-bold mb-1">Especifica tu objetivo</label>
+                            <input type="text" id="objetivo-otro" name="objetivo-otro" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Cuéntame más...">
+                        </div>
+                        <div>
+                            <label for="elevator-pitch" class="block text-sm font-bold mb-1">Elevator Pitch</label>
+                            <textarea id="elevator-pitch" name="elevator-pitch" rows="3" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Describe tu negocio en dos frases. ¿Qué problema resuelves?"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 3: El público -->
+            <div class="step" data-step="3">
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">Tu público ideal</h2>
+                        <p class="text-text-light/70 dark:text-text-dark/70 text-sm mb-6">¿A quién nos dirigimos y qué queremos que hagan?</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="publico" class="block text-sm font-bold mb-1">¿A quién nos dirigimos?</label>
+                            <input type="text" id="publico" name="publico" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Ej: Adolescentes, profesionales de medicina...">
+                        </div>
+                        <div>
+                            <label for="accion-principal" class="block text-sm font-bold mb-1">Acción principal</label>
+                            <input type="text" id="accion-principal" name="accion-principal" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="¿Qué es lo primero que quieres que haga el usuario al entrar?">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 4: Experiencia -->
+            <div class="step" data-step="4">
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">Estructura y Navegación</h2>
+                        <p class="text-text-light/70 dark:text-text-dark/70 text-sm mb-6">Define las piezas fundamentales de tu web.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <span class="block text-sm font-bold mb-2">Secciones deseadas</span>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-secondary/20 bg-white/40 cursor-pointer hover:bg-white/60 transition-colors">
+                                <input type="checkbox" name="secciones" value="sobre-mi" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm">Sobre mí</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-secondary/20 bg-white/40 cursor-pointer hover:bg-white/60 transition-colors">
+                                <input type="checkbox" name="secciones" value="servicios" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm">Servicios</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-secondary/20 bg-white/40 cursor-pointer hover:bg-white/60 transition-colors">
+                                <input type="checkbox" name="secciones" value="contacto" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm">Contacto</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-secondary/20 bg-white/40 cursor-pointer hover:bg-white/60 transition-colors">
+                                <input type="checkbox" name="secciones" value="blog" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm">Blog</span>
+                            </label>
+                            <label class="flex items-center gap-3 p-3 rounded-xl border border-secondary/20 bg-white/40 cursor-pointer hover:bg-white/60 transition-colors">
+                                <input type="checkbox" name="secciones" value="galeria" class="rounded text-primary focus:ring-primary">
+                                <span class="text-sm">Galería</span>
+                            </label>
+                        </div>
+                        <div>
+                            <label for="otras-secciones" class="block text-sm font-bold mb-1">Otras secciones</label>
+                            <input type="text" id="otras-secciones" name="otras-secciones" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Escribe aquí si necesitas algo más...">
+                        </div>
+                        <div>
+                            <label for="must-haves" class="block text-sm font-bold mb-1">Elementos clave (Must-haves)</label>
+                            <textarea id="must-haves" name="must-haves" rows="3" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Menciona botones o gráficos específicos (Ej: Buscador, carrusel, pasarela de pagos...)"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paso 5: Diseño -->
+            <div class="step" data-step="5">
+                <div class="space-y-6">
+                    <div>
+                        <h2 class="text-xl font-bold mb-2">Identidad Visual</h2>
+                        <p class="text-text-light/70 dark:text-text-dark/70 text-sm mb-6">¿Cómo quieres que se sienta tu web?</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="estilo" class="block text-sm font-bold mb-1">Estilo visual predominante</label>
+                            <select id="estilo" name="estilo" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary">
+                                <option value="minimalista">Minimalista (Limpio, mucho aire)</option>
+                                <option value="colorido">Colorido y vibrante (Energético)</option>
+                                <option value="profesional">Profesional/Corporativo (Serio, confiable)</option>
+                                <option value="dark">Dark Mode / Elegante</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="referencias" class="block text-sm font-bold mb-1">Referencias</label>
+                            <input type="text" id="referencias" name="referencias" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Pega aquí 2 o 3 enlaces de webs que te gusten">
+                        </div>
+                        <div>
+                            <label for="comentarios-extra" class="block text-sm font-bold mb-1">Comentarios extra sobre el diseño</label>
+                            <textarea id="comentarios-extra" name="comentarios-extra" rows="3" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Cualquier otra cosa que deba saber..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de navegación -->
+            <div class="mt-10 flex justify-between items-center">
+                <button type="button" id="prev-btn" class="hidden px-6 py-3 rounded-full border border-primary/30 text-primary font-bold hover:bg-primary/5 transition-all flex items-center gap-2">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                    Atrás
+                </button>
+                <div class="flex-grow"></div>
+                <button type="button" id="next-btn" class="px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:bg-opacity-90 transition-all flex items-center gap-2">
+                    Siguiente
+                    <span class="material-symbols-outlined">arrow_forward</span>
+                </button>
+                <button type="submit" id="submit-btn" class="hidden px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:bg-opacity-90 transition-all flex items-center gap-2">
+                    Enviar briefing
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<script>
+    let currentStep = 1;
+    const totalSteps = 5;
+    const form = document.querySelector('form');
+    const steps = document.querySelectorAll('.step');
+    const nextBtn = document.getElementById('next-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const submitBtn = document.getElementById('submit-btn');
+    const progressBar = document.getElementById('progress-bar');
+    const stepIndicator = document.getElementById('step-indicator');
+
+    const objetivoSelect = document.getElementById('objetivo');
+    const objetivoOtroContainer = document.getElementById('objetivo-otro-container');
+
+    function updateForm() {
+        steps.forEach(step => {
+            step.classList.remove('active');
+            if (parseInt(step.dataset.step) === currentStep) {
+                step.classList.add('active');
+            }
+        });
+
+        // Update progress bar
+        const progress = (currentStep / totalSteps) * 100;
+        progressBar.style.width = `${progress}%`;
+        stepIndicator.innerText = `Paso ${currentStep} de ${totalSteps}`;
+
+        // Update buttons
+        if (currentStep === 1) {
+            prevBtn.classList.add('hidden');
+        } else {
+            prevBtn.classList.remove('hidden');
+        }
+
+        if (currentStep === totalSteps) {
+            nextBtn.classList.add('hidden');
+            submitBtn.classList.remove('hidden');
+        } else {
+            nextBtn.classList.remove('hidden');
+            submitBtn.classList.add('hidden');
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    nextBtn.addEventListener('click', () => {
+        // Basic validation for Step 1
+        if (currentStep === 1) {
+            const inputs = steps[0].querySelectorAll('input[required]');
+            let valid = true;
+            inputs.forEach(input => {
+                if (!input.value) {
+                    input.classList.add('border-red-500');
+                    valid = false;
+                } else {
+                    input.classList.remove('border-red-500');
+                }
+            });
+            if (!valid) return;
+        }
+
+        if (currentStep < totalSteps) {
+            currentStep++;
+            updateForm();
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentStep > 1) {
+            currentStep--;
+            updateForm();
+        }
+    });
+
+    objetivoSelect.addEventListener('change', (e) => {
+        if (e.target.value === 'otro') {
+            objetivoOtroContainer.classList.remove('hidden');
+        } else {
+            objetivoOtroContainer.classList.add('hidden');
+        }
+    });
+
+    form.addEventListener('submit', (e) => {
+        // Let Netlify handle the submission
+    });
+</script>
+
+</body>
+</html>
