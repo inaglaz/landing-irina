@@ -254,11 +254,16 @@ nav.sc{background:rgba(253,251,247,.96)!important;backdrop-filter:blur(20px);pad
 .nav-end{display:flex;justify-content:flex-end;align-items:center;gap:1rem}
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
 .ham span{display:block;width:22px;height:1.5px;background:var(--tx);transition:all .3s}
-.mob{display:none;position:fixed;inset:0;z-index:199;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
+.mob{display:none;position:fixed;inset:0;z-index:210;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem}
 .mob.op{display:flex}
 .mob a{font-family:'Playfair Display',serif;font-size:2.3rem;font-weight:400;text-decoration:none;color:var(--tx)}
 .mob a:hover{color:var(--pr)}
-.mobx{position:absolute;top:1.5rem;right:1.5rem;font-size:1.3rem;cursor:pointer;color:var(--tl);background:none;border:none}
+.mobx{position:absolute;top:1.5rem;right:1.5rem;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;color:var(--tl);background:none;border:none;z-index:211}
+/* Hide hamburger when menu is open */
+nav.menu-open .ham span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+nav.menu-open .ham span:nth-child(2){opacity:0;transform:scaleX(0)}
+nav.menu-open .ham span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
+nav.menu-open{z-index:211}
 @media(max-width:768px){
   nav{grid-template-columns:1fr auto}
   .nl,.nav-cta-d{display:none}
@@ -388,10 +393,35 @@ nav.sc{background:rgba(253,251,247,.96)!important;backdrop-filter:blur(20px);pad
 .about-mob{display:none}
 @media(max-width:768px){
   .about-dt{display:none}
-  .about-mob{display:block;background:var(--dk);padding-bottom:4rem}
-  .mob-photo-sticky{position:sticky;top:70px;z-index:5;display:flex;justify-content:center;padding-top:3rem;pointer-events:none}
+  .about-mob{display:block;background:#2C1F14}
+
+  /* Outer tall container: provides the scroll distance */
+  .mob-stack-outer{
+    position:relative;
+    height:420vh;
+    background:#2C1F14;
+  }
+
+  /* Sticky wrapper: stays in viewport the whole time */
+  .mob-stack-sticky{
+    position:sticky;
+    top:0;
+    height:100svh;
+    overflow:hidden;
+    background:#2C1F14;
+  }
+
+  /* Photo sits at top of sticky wrapper */
+  .mob-photo-sticky{
+    position:absolute;
+    top:0; left:0; right:0;
+    display:flex;justify-content:center;
+    padding-top:4.5rem;
+    pointer-events:none;
+    z-index:1;
+  }
   .mob-irina{
-    width:180px;height:260px;flex-shrink:0;
+    width:160px;height:230px;flex-shrink:0;
     background:url('https://raw.githubusercontent.com/inaglaz/landing-irina/main/landing-2.webp') center top/cover no-repeat;
     -webkit-mask-image:linear-gradient(to bottom,black 0%,black 65%,transparent 100%),radial-gradient(ellipse 95% 100% at 50% 0%,black 0%,transparent 100%);
     -webkit-mask-composite:intersect;
@@ -402,12 +432,37 @@ nav.sc{background:rgba(253,251,247,.96)!important;backdrop-filter:blur(20px);pad
     animation:floatPhoto 4s ease-in-out infinite;
   }
   @keyframes floatPhoto{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-  .mob-chapters{padding:2.5rem 1.5rem 1rem;margin-top:-60px;position:relative;z-index:6}
-  .mob-ch{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;margin-bottom:2.5rem;padding:1.5rem;background:rgba(255,255,255,.06);backdrop-filter:blur(12px);border:.5px solid rgba(255,255,255,.1);border-radius:16px}
-  .mob-ch.v{opacity:1;transform:translateY(0)}
+
+  /* Cards absolutely positioned inside sticky wrapper */
+  /* All start off-screen below, JS moves them to stacked positions */
+  .mob-chapters{
+    position:absolute;
+    inset:0;
+    z-index:2;
+  }
+  .mob-ch{
+    position:absolute;
+    left:1rem; right:1rem;
+    padding:1.4rem;
+    border-radius:16px;
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border:.5px solid rgba(255,255,255,.12);
+    /* Start below viewport */
+    transform:translateY(100vh);
+    transition:transform .9s cubic-bezier(.22,1,.36,1);
+    will-change:transform;
+  }
+  /* Final stacked positions — 40px peek gap for eyebrow line */
+  .mob-ch:nth-child(1){top:195px;z-index:1;background:rgba(44,31,20,.93)}
+  .mob-ch:nth-child(2){top:235px;z-index:2;background:rgba(52,36,22,.95)}
+  .mob-ch:nth-child(3){top:275px;z-index:3;background:rgba(60,41,24,.97)}
+  .mob-ch:nth-child(4){top:315px;z-index:4;background:rgba(68,46,26,.99)}
+  /* When stacked: slide to its top position */
+  .mob-ch.in-place{transform:translateY(0)}
   .mob-ch .aey{margin-bottom:.75rem}
-  .mob-ch .ah2{font-size:1.4rem;margin-bottom:.75rem}
-  .mob-ch .abody{font-size:.86rem}
+  .mob-ch .ah2{font-size:1.3rem;margin-bottom:.75rem}
+  .mob-ch .abody{font-size:.84rem}
 }
 
 /* ── MATERIAL SYMBOLS ── */
@@ -717,34 +772,64 @@ footer{background:#111008;padding:2rem 1.25rem;display:flex;justify-content:spac
 
   <!-- MOBILE VERSION -->
   <div class="about-mob" style="background:#2C1F14">
-    <div class="mob-photo-sticky">
-      <div class="mob-irina"></div>
-    </div>
-    <div class="mob-chapters">
-      <div class="mob-ch rv">
-        <p class="aey">01 — Quién soy</p>
-        <h2 class="ah2">Diseñadora web en Sevilla con <em>8 años</em> en marketing digital.</h2>
-        <p class="abody">Empecé gestionando campañas en Google, Meta, Twitter, LinkedIn y Spotify. Con el tiempo me di cuenta de que había un problema recurrente: invertir en anuncios cuando la web a la que llegaba la gente no estaba bien hecha.</p>
-      </div>
-      <div class="mob-ch rv d1">
-        <p class="aey">02 — Lo que me diferencia</p>
-        <h2 class="ah2">Webs pensadas para <em>convertir visitas</em> en clientes desde el primer día.</h2>
-        <p class="abody">Especializada en campañas de hasta <strong style="color:rgba(255,255,255,.88)">40.000 € mensuales.</strong> Diseño webs en código limpio para que se adapte 100% al negocio. No improviso: estructuro, mido y optimizo.</p>
-      </div>
-      <div class="mob-ch rv d2">
-        <p class="aey">03 — Mi manera de trabajar</p>
-        <h2 class="ah2">Decisiones basadas en <em>datos.</em> Adaptación constante.</h2>
-        <p class="abody" style="margin-bottom:.75rem">Autodidacta, siempre al tanto de las últimas novedades y aplicando pruebas A/B ante cualquier cambio.</p>
-        <div class="ssk">
-          <div class="sski"><span class="sskic">🔄</span><span class="sskl">Adaptación al cambio</span></div>
-          <div class="sski"><span class="sskic">🧠</span><span class="sskl">Gestión de proyectos</span></div>
-          <div class="sski"><span class="sskic">✦</span><span class="sskl">Liderazgo</span></div>
+    <div class="mob-stack-outer" id="mobStackOuter">
+      <div class="mob-stack-sticky">
+        <div class="mob-photo-sticky">
+          <div class="mob-irina"></div>
         </div>
-      </div>
-      <div class="mob-ch rv d3">
-        <p class="aey">04 — Dónde estoy</p>
-        <h2 class="ah2">Sevilla y Dos Hermanas. También en remoto con negocios de <em>toda España.</em></h2>
-        <p class="abody">No soy una agencia. Todo pasa por mí, no hay margen de error. Y si lo hay, yo respondo.</p>
+        <div class="mob-chapters">
+          <div class="mob-ch" id="mc1">
+            <p class="aey">01 — Quién soy</p>
+            <h2 class="ah2">Diseñadora web en Sevilla con <em>8 años</em> en marketing digital.</h2>
+            <p class="abody">Empecé gestionando campañas de publicidad en Google, Meta, Twitter, LinkedIn y Spotify y optimizando el SEO para distintas empresas. Con el tiempo me di cuenta de que había un problema recurrente: invertir en anuncios cuando la web a la que llegaba la gente no estaba bien hecha.</p>
+            <div class="achips" style="margin-top:1rem"><span class="achip">Google Ads</span><span class="achip">Meta Ads</span><span class="achip">GA4</span><span class="achip">Tag Manager</span><span class="achip">SEO</span></div>
+            <div class="ab-interactive">
+              <div class="ab-bar-wrap">
+                <div class="ab-bar-item"><span class="ab-bar-label">Performance</span><div class="ab-bar-track"><div class="ab-bar-fill" data-w="92"></div></div></div>
+                <div class="ab-bar-item"><span class="ab-bar-label">SEO</span><div class="ab-bar-track"><div class="ab-bar-fill" data-w="88"></div></div></div>
+                <div class="ab-bar-item"><span class="ab-bar-label">Diseño web</span><div class="ab-bar-track"><div class="ab-bar-fill" data-w="85"></div></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="mob-ch" id="mc2">
+            <p class="aey">02 — Lo que me diferencia</p>
+            <h2 class="ah2">Webs pensadas para <em>convertir visitas</em> en clientes desde el primer día.</h2>
+            <p class="abody">Estoy especializada en gestionar campañas de hasta <strong style="color:rgba(255,255,255,.88)">40.000 € mensuales</strong> y, con las nuevas tecnologías, diseño webs en código limpio para que se adapte 100% al negocio. No improviso: estructuro, mido y optimizo cada decisión.</p>
+            <div class="ab-interactive">
+              <div class="counter-wrap">
+                <span class="counter-num" id="ctr-mob">0</span>
+                <span style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ac)">€</span>
+                <span class="counter-label">/ mes gestionados</span>
+              </div>
+            </div>
+          </div>
+          <div class="mob-ch" id="mc3">
+            <p class="aey">03 — Mi manera de trabajar</p>
+            <h2 class="ah2">Decisiones basadas en <em>datos.</em> Adaptación constante.</h2>
+            <p class="abody" style="margin-bottom:.75rem">Soy una persona altamente autodidacta que intenta estar siempre al tanto de las últimas novedades e implementar pruebas A/B ante cualquier cambio.</p>
+            <div class="ssk">
+              <div class="sski"><span class="sskic">🔄</span><span class="sskl">Adaptación al cambio</span></div>
+              <div class="sski"><span class="sskic">🧠</span><span class="sskl">Gestión de proyectos</span></div>
+              <div class="sski"><span class="sskic">✦</span><span class="sskl">Liderazgo</span></div>
+            </div>
+            <div class="ab-interactive">
+              <p style="font-size:.7rem;color:rgba(255,255,255,.35);margin-bottom:.5rem;letter-spacing:.06em;text-transform:uppercase">Simulación A/B</p>
+              <div class="ab-toggle-wrap">
+                <div class="ab-toggle-opt active" data-res="Versión A: CTR +18% · Mantener">Versión A</div>
+                <div class="ab-toggle-opt" data-res="Versión B: CTR +31% · Implementar">Versión B</div>
+              </div>
+              <p class="ab-toggle-result" id="ab-res-mob">Versión A: CTR +18% · Mantener</p>
+            </div>
+          </div>
+          <div class="mob-ch" id="mc4">
+            <p class="aey">04 — Dónde estoy</p>
+            <h2 class="ah2">Sevilla y Dos Hermanas. También en remoto con negocios de <em>toda España.</em></h2>
+            <p class="abody">No necesitas estar cerca, con un café y un portátil nos ponemos manos a la obra. No soy una agencia pero he trabajado en algunas. Por eso me hice freelancer, porque todo pasa por mí y porque no hay margen de error. Y si lo hay, yo respondo.</p>
+            <div class="ab-interactive">
+              <span class="ab-avail"><span class="ab-avail-dot"></span>Disponible para nuevos proyectos</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -888,9 +973,11 @@ window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 60)
 
 // MOBILE MENU
 const ham=document.getElementById('ham'), mob=document.getElementById('mob'), mx=document.getElementById('mx');
-ham.addEventListener('click', () => mob.classList.add('op'));
-mx.addEventListener('click', () => mob.classList.remove('op'));
-document.querySelectorAll('.ml').forEach(l => l.addEventListener('click', () => mob.classList.remove('op')));
+function openMenu(){ mob.classList.add('op'); nav.classList.add('menu-open'); document.body.style.overflow='hidden'; }
+function closeMenu(){ mob.classList.remove('op'); nav.classList.remove('menu-open'); document.body.style.overflow=''; }
+ham.addEventListener('click', () => mob.classList.contains('op') ? closeMenu() : openMenu());
+mx.addEventListener('click', closeMenu);
+document.querySelectorAll('.ml').forEach(l => l.addEventListener('click', closeMenu));
 
 // REVEAL — rootMargin 0 so it fires reliably on all screen sizes
 const ro = new IntersectionObserver(es => {
@@ -956,8 +1043,7 @@ document.querySelectorAll('.fqb').forEach(btn => {
   });
 });
 
-// ABOUT INTERACTIVE — counter, bars, A/B toggle
-// Counter 0 → 40,000
+// Counter desktop
 const ctrEl = document.getElementById('ctr');
 if(ctrEl){
   const ctrObs = new IntersectionObserver(entries => {
@@ -975,6 +1061,24 @@ if(ctrEl){
   ctrObs.observe(ctrEl);
 }
 
+// Counter mobile
+const ctrMob = document.getElementById('ctr-mob');
+if(ctrMob){
+  const ctrMobObs = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting){
+      let start = 0; const end = 40000; const dur = 1800;
+      const step = Math.ceil(end / (dur/16));
+      const timer = setInterval(() => {
+        start = Math.min(start + step, end);
+        ctrMob.textContent = start.toLocaleString('es-ES');
+        if(start >= end) clearInterval(timer);
+      }, 16);
+      ctrMobObs.unobserve(ctrMob);
+    }
+  }, {threshold:.3});
+  ctrMobObs.observe(ctrMob);
+}
+
 // Skill bars animate in
 const barObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
@@ -983,18 +1087,52 @@ const barObs = new IntersectionObserver(entries => {
       barObs.unobserve(e.target);
     }
   });
-}, {threshold:.4});
+}, {threshold:.3});
 document.querySelectorAll('.ab-bar-wrap').forEach(w => barObs.observe(w));
 
-// A/B toggle
+// A/B toggle — works on both desktop and mobile
 document.querySelectorAll('.ab-toggle-opt').forEach(opt => {
   opt.addEventListener('click', () => {
-    opt.closest('.ab-toggle-wrap').querySelectorAll('.ab-toggle-opt').forEach(o => o.classList.remove('active'));
+    const wrap = opt.closest('.ab-toggle-wrap');
+    wrap.querySelectorAll('.ab-toggle-opt').forEach(o => o.classList.remove('active'));
     opt.classList.add('active');
-    const res = document.getElementById('ab-res');
-    if(res){ res.style.opacity='0'; setTimeout(() => { res.textContent = opt.dataset.res; res.style.opacity='1'; }, 200); }
+    const resEl = wrap.nextElementSibling;
+    if(resEl && resEl.classList.contains('ab-toggle-result')){
+      resEl.style.opacity='0';
+      setTimeout(() => { resEl.textContent = opt.dataset.res; resEl.style.opacity='1'; }, 200);
+    }
   });
 });
+
+// MOBILE STACK — JS driven
+const mobOuter = document.getElementById('mobStackOuter');
+if(mobOuter){
+  const mobCards = [
+    document.getElementById('mc1'),
+    document.getElementById('mc2'),
+    document.getElementById('mc3'),
+    document.getElementById('mc4')
+  ];
+  const initObs = new IntersectionObserver(entries => {
+    if(entries[0].isIntersecting){
+      mobCards[0].classList.add('in-place');
+      initObs.unobserve(mobOuter);
+    }
+  }, {threshold:0.05});
+  initObs.observe(mobOuter);
+
+  window.addEventListener('scroll', () => {
+    const rect = mobOuter.getBoundingClientRect();
+    const total = mobOuter.offsetHeight - window.innerHeight;
+    if(total <= 0) return;
+    const scrolled = -rect.top;
+    if(scrolled < 0) return;
+    const progress = Math.min(scrolled / total, 1);
+    mobCards.forEach((c, i) => {
+      if(c) c.classList.toggle('in-place', progress >= i * 0.25);
+    });
+  }, {passive:true});
+}
 </script>
 </body>
 </html>
