@@ -293,8 +293,9 @@ select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/
 
   <!-- FORM CARD -->
   <div class="form-card">
-    <form id="briefing-form" name="briefing-cliente" method="POST" data-netlify="true">
+    <form id="briefing-form" name="briefing-cliente" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="briefing-cliente">
+      <p style="display:none"><label>No rellenar: <input name="bot-field"></label></p>
 
       <!-- PASO 1 -->
       <div class="step active" data-step="1">
@@ -540,30 +541,31 @@ document.querySelectorAll('.checkbox-label input[type=checkbox]').forEach(cb => 
   });
 });
 
-// Submit via Netlify
+// Submit — native POST, Netlify handles it
+// Show success screen on submit click, then let form POST natively
 submitBtn.addEventListener('click', () => {
   const form = document.getElementById('briefing-form');
-  const data = new FormData(form);
 
-  fetch('/', {
+  // Validate last step
+  if(!validateStep(currentStep)) return;
+
+  // Show success UI immediately
+  steps.forEach(s => s.classList.remove('active'));
+  formNav.style.display = 'none';
+  successScreen.classList.add('show');
+  progressBar.style.width = '100%';
+  for(let i=1;i<=totalSteps;i++){
+    const pill=document.getElementById(`pill-${i}`);
+    if(pill){pill.classList.remove('active');pill.classList.add('done');pill.innerHTML=`<span class="ms">check</span>${pillLabels[i-1]}`;}
+  }
+
+  // Submit in background — Netlify processes it
+  const data = new FormData(form);
+  fetch('/form.html', {
     method: 'POST',
     headers: {'Content-Type': 'application/x-www-form-urlencoded'},
     body: new URLSearchParams(data).toString()
-  })
-  .then(() => {
-    steps.forEach(s => s.classList.remove('active'));
-    formNav.style.display = 'none';
-    successScreen.classList.add('show');
-    progressBar.style.width = '100%';
-    for(let i=1;i<=totalSteps;i++){
-      const pill=document.getElementById(`pill-${i}`);
-      if(pill){pill.classList.remove('active');pill.classList.add('done');pill.innerHTML=`<span class="ms">check</span>${pillLabels[i-1]}`;}
-    }
-  })
-  .catch(() => {
-    // Fallback: native submit
-    form.submit();
-  });
+  }).catch(() => form.submit());
 });
 
 // Init
