@@ -1,356 +1,573 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" style="color-scheme:light only">
 <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-M7KXQ24J');</script>
-    <!-- End Google Tag Manager -->
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-M7KXQ24J');</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<title>Cuéntame tu proyecto | Irina Glazún</title>
+<meta name="description" content="Cuéntame más sobre tu proyecto y te respondo en menos de 24 horas.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%238B5E3C'/><text x='50' y='68' font-family='Georgia,serif' font-size='44' font-weight='700' fill='%23FDFBF7' text-anchor='middle' letter-spacing='-2'>IG</text></svg>">
 
-    <title>Briefing del Proyecto | Irina Glazún ✨</title>
-    <meta name="description" content="Cuéntame más sobre tu proyecto para que podamos crear una web con alma y estrategia."/>
-    <meta name="robots" content="noindex, nofollow">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pr:#8B5E3C;--se:#D4B499;--ac:#E67E22;
+  --bg:#FDFBF7;--bg2:#F5F0E8;--su:#FFFFFF;
+  --tx:#4A4036;--tl:#7A6A5A;--br:#EDE0D4;
+  color-scheme:light only;
+}
+html,body{background:#FDFBF7!important;color:#4A4036!important;min-height:100vh}
+body{font-family:'Plus Jakarta Sans',sans-serif;font-weight:300;-webkit-text-size-adjust:100%}
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Rock+Salt&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+/* ── HEADER ── */
+header{
+  width:100%;padding:1.25rem 2rem;
+  border-bottom:.5px solid rgba(139,94,60,.15);
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(253,251,247,.95);backdrop-filter:blur(16px);
+  position:sticky;top:0;z-index:100;
+}
+.logo{font-family:'Rock Salt',cursive;font-size:1rem;color:var(--pr);text-decoration:none}
+.back-link{
+  display:flex;align-items:center;gap:.4rem;
+  font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;
+  text-decoration:none;color:var(--tl);transition:color .3s;
+}
+.back-link:hover{color:var(--pr)}
+.ms{font-family:'Material Symbols Outlined';font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;font-size:18px;line-height:1}
 
-    <style type="text/tailwindcss">
-        :root {
-            --primary-color: #8B5E3C;
-            --secondary-color: #D4B499;
-            --accent-color: #E67E22;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .step { display: none; }
-        .step.active { display: block; }
-    </style>
-    <script>
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        primary: "#8B5E3C",
-                        secondary: "#D4B499",
-                        accent: "#E67E22",
-                        "background-light": "#FDFBF7",
-                        "background-dark": "#1C1917",
-                        "surface-light": "#FFFFFF",
-                        "surface-dark": "#292524",
-                        "text-light": "#4A4036",
-                        "text-dark": "#E7E5E4",
-                    },
-                    fontFamily: {
-                        display: ["Playfair Display", "serif"],
-                        body: ["Plus Jakarta Sans", "sans-serif"],
-                        logo: ["Rock Salt"],
-                    },
-                    borderRadius: {
-                        DEFAULT: "0.75rem",
-                        'xl': "1rem",
-                        '2xl': "1.5rem",
-                    },
-                    boxShadow: {
-                        'soft': '0 4px 20px -2px rgba(139, 94, 60, 0.1)',
-                    }
-                },
-            },
-        };
-    </script>
+@media(max-width:600px){header{padding:1rem 1.25rem}.logo{font-size:.85rem}}
+
+/* ── MAIN LAYOUT ── */
+main{max-width:680px;margin:0 auto;padding:3rem 1.5rem 5rem}
+
+/* ── PROGRESS ── */
+.progress-wrap{margin-bottom:3rem}
+.progress-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+.progress-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-weight:400;color:var(--tx);
+}
+.progress-indicator{
+  font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--se);font-weight:400;
+}
+.progress-track{
+  width:100%;height:3px;background:rgba(139,94,60,.12);
+  border-radius:2px;overflow:hidden;
+}
+.progress-fill{
+  height:100%;background:var(--pr);border-radius:2px;
+  transition:width .6s cubic-bezier(.16,1,.3,1);
+  width:20%;
+}
+
+/* ── TIME BADGE ── */
+.time-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(139,94,60,.08);color:var(--pr);
+  padding:.35rem .9rem;border-radius:100px;
+  font-size:.72rem;letter-spacing:.07em;font-weight:400;
+  border:.5px solid rgba(139,94,60,.2);
+  margin-bottom:1.5rem;
+}
+.time-badge .ms{font-size:14px}
+
+/* ── STEP PILLS ── */
+.step-pills{
+  display:flex;gap:.4rem;margin-top:1rem;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding-bottom:2px;
+}
+.step-pills::-webkit-scrollbar{display:none}
+.pill{
+  display:flex;align-items:center;gap:.35rem;
+  padding:.35rem .85rem;border-radius:100px;
+  border:1.5px solid var(--br);background:var(--bg2);
+  font-size:.68rem;letter-spacing:.05em;color:var(--tl);
+  white-space:nowrap;transition:all .4s cubic-bezier(.16,1,.3,1);
+  flex-shrink:0;
+}
+.pill .ms{font-size:13px;transition:all .4s}
+.pill.done{
+  background:rgba(212,180,153,.2);
+  border-color:var(--se);color:var(--se);
+}
+.pill.done .ms{color:var(--se)}
+.pill.active{
+  background:var(--pr);border-color:var(--pr);
+  color:#fff;
+  box-shadow:0 3px 12px rgba(139,94,60,.25);
+  transform:scale(1.05);
+}
+.pill.active .ms{color:#fff}
+
+/* ── CARD ── */
+.form-card{
+  background:var(--su);
+  border:.5px solid var(--br);
+  border-radius:24px;
+  box-shadow:0 8px 40px rgba(139,94,60,.07);
+  overflow:hidden;
+}
+
+/* ── STEP ── */
+.step{display:none;padding:2.5rem}
+.step.active{display:block;animation:stepIn .4s cubic-bezier(.16,1,.3,1)}
+@keyframes stepIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+.step-out{animation:stepOut .3s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes stepOut{from{opacity:1;transform:translateX(0)}to{opacity:0;transform:translateX(-20px)}}
+
+.step-eyebrow{
+  font-size:.67rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--pr);display:flex;align-items:center;gap:.4rem;
+  margin-bottom:.75rem;
+}
+.step-eyebrow::before{content:'';display:block;width:16px;height:1.5px;background:var(--pr);border-radius:2px}
+.step-h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:400;color:var(--tx);
+  margin-bottom:.5rem;line-height:1.2;
+}
+.step-sub{font-size:.85rem;color:var(--tl);margin-bottom:2rem;line-height:1.7}
+
+/* ── FIELDS ── */
+.field{margin-bottom:1.5rem}
+label{
+  display:block;font-size:.78rem;font-weight:500;
+  color:var(--tx);letter-spacing:.04em;margin-bottom:.5rem;
+}
+input[type=text],input[type=email],input[type=tel],
+select,textarea{
+  width:100%;padding:.85rem 1rem;
+  background:var(--bg2);border:1.5px solid var(--br);
+  border-radius:12px;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.9rem;color:var(--tx);font-weight:300;
+  outline:none;transition:border-color .25s,box-shadow .25s,background .25s;
+  -webkit-appearance:none;appearance:none;
+}
+input:focus,select:focus,textarea:focus{
+  border-color:var(--pr);
+  background:var(--su);
+  box-shadow:0 0 0 3px rgba(139,94,60,.08);
+}
+input.error{border-color:#c0392b;background:#fff5f5}
+input::placeholder,textarea::placeholder{color:rgba(122,106,90,.5)}
+textarea{resize:vertical;min-height:90px}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238B5E3C' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem}
+
+/* ── CHECKBOXES ── */
+.checkbox-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.65rem;margin-bottom:1.5rem}
+.checkbox-label{
+  display:flex;align-items:center;gap:.75rem;
+  padding:.85rem 1rem;
+  border:1.5px solid var(--br);border-radius:12px;
+  background:var(--bg2);cursor:pointer;
+  transition:all .25s;
+  font-size:.85rem;color:var(--tx);
+}
+.checkbox-label:hover{border-color:var(--se);background:rgba(212,180,153,.1)}
+.checkbox-label input{
+  width:16px;height:16px;flex-shrink:0;
+  accent-color:var(--pr);cursor:pointer;
+  border:1.5px solid var(--br);border-radius:4px;
+  padding:0;background:var(--su);
+}
+.checkbox-label.checked{border-color:var(--pr);background:rgba(139,94,60,.06)}
+@media(max-width:500px){.checkbox-grid{grid-template-columns:1fr}}
+
+/* ── HIDDEN ── */
+.hidden{display:none!important}
+
+/* ── NAV BUTTONS ── */
+.form-nav{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.5rem 2.5rem 2rem;
+  border-top:.5px solid var(--br);
+  background:var(--bg2);
+}
+.btn-prev{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.7rem 1.5rem;border-radius:100px;
+  border:1.5px solid var(--br);background:transparent;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.75rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--tl);cursor:pointer;font-weight:400;transition:all .3s;
+}
+.btn-prev:hover{border-color:var(--pr);color:var(--pr)}
+.btn-next,.btn-submit{
+  display:flex;align-items:center;gap:.4rem;
+  padding:.85rem 2rem;border-radius:100px;
+  background:var(--pr);color:#fff;border:none;cursor:pointer;
+  font-family:'Plus Jakarta Sans',sans-serif;
+  font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:400;
+  box-shadow:0 4px 16px rgba(139,94,60,.25);
+  transition:background .3s,transform .2s,box-shadow .3s;
+}
+.btn-next:hover,.btn-submit:hover{
+  background:var(--ac);transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(230,126,34,.3);
+}
+.btn-next .ms,.btn-submit .ms{font-size:16px}
+
+/* ── SUCCESS ── */
+#success-screen{
+  display:none;padding:4rem 2.5rem;text-align:center;
+}
+#success-screen.show{display:block;animation:stepIn .5s cubic-bezier(.16,1,.3,1)}
+.success-icon{
+  width:64px;height:64px;background:rgba(139,94,60,.1);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.5rem;
+}
+.success-icon .ms{font-size:28px;color:var(--pr)}
+.success-h{
+  font-family:'Playfair Display',serif;
+  font-size:1.75rem;font-weight:400;color:var(--tx);
+  margin-bottom:.75rem;
+}
+.success-p{font-size:.9rem;line-height:1.8;color:var(--tl);margin-bottom:2rem}
+.btn-home{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.85rem 2rem;border-radius:100px;
+  background:var(--pr);color:#fff;text-decoration:none;
+  font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+  font-weight:400;box-shadow:0 4px 16px rgba(139,94,60,.25);
+  transition:background .3s;
+}
+.btn-home:hover{background:var(--ac)}
+
+/* ── HAND-DRAWN underline ── */
+.hu{position:relative;display:inline-block}
+.hu svg{position:absolute;bottom:-4px;left:-2px;width:calc(100% + 4px);height:8px;overflow:visible;pointer-events:none}
+
+@media(max-width:600px){
+  main{padding:2rem 1rem 4rem}
+  .step{padding:1.75rem 1.25rem}
+  .form-nav{padding:1.25rem 1.25rem 1.5rem}
+  .progress-title{font-size:1.25rem}
+}
+</style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-body transition-colors duration-300 min-h-screen">
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7KXQ24J"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M7KXQ24J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<header class="w-full py-6 px-4 sm:px-6 lg:px-8 border-b border-secondary/20 dark:border-white/10">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="index.html" class="font-logo text-2xl text-primary dark:text-secondary pt-2">Irina Glazún</a>
-        <a href="index.html" class="flex items-center gap-2 text-sm font-semibold text-text-light/60 dark:text-text-dark/60 hover:text-primary transition-colors">
-            <span class="material-symbols-outlined text-lg">arrow_back</span>
-            Volver al inicio
-        </a>
-    </div>
+<header>
+  <a href="index.html" class="logo">Irina Glazún</a>
+  <a href="index.html" class="back-link">
+    <span class="ms">arrow_back</span>
+    Volver
+  </a>
 </header>
 
-<main class="max-w-3xl mx-auto px-4 py-12">
-    <div class="mb-10">
-        <div class="flex justify-between items-center mb-4">
-            <h1 class="text-2xl font-display font-bold text-text-light dark:text-white">Briefing de tu proyecto</h1>
-            <span id="step-indicator" class="text-sm font-semibold text-primary/60 dark:text-secondary/60 uppercase tracking-widest">Paso 1 de 5</span>
-        </div>
-        <div class="w-full bg-secondary/20 dark:bg-white/10 h-2 rounded-full overflow-hidden">
-            <div id="progress-bar" class="bg-primary h-full transition-all duration-500 w-1/5"></div>
-        </div>
+<main>
+  <!-- PROGRESS -->
+  <div class="progress-wrap">
+    <div class="time-badge">
+      <span class="ms">schedule</span>
+      2-3 minutos — 5 preguntas rápidas
     </div>
-
-    <div class="bg-white/60 dark:bg-surface-dark/60 backdrop-blur-xl rounded-3xl shadow-xl border border-white/50 dark:border-white/10 overflow-hidden">
-        <form name="briefing-cliente" method="POST" data-netlify="true" class="p-8 md:p-10">
-            <input type="hidden" name="form-name" value="briefing-cliente" />
-
-            <!-- Paso 1: Datos -->
-            <div class="step active" data-step="1">
-                <div class="space-y-6">
-                    <div>
-                        <h2 class="text-xl font-bold mb-2">Comencemos por lo básico</h2>
-                        <p class="text-text-light/70 dark:text-text-dark/70 text-sm mb-6">Necesito tus datos de contacto para poder responderte.</p>
-                    </div>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="nombre" class="block text-sm font-bold mb-1">Nombre completo</label>
-                            <input type="text" id="nombre" name="nombre" required class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Ej: Maria García">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-bold mb-1">Email</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="tu@email.com">
-                        </div>
-                        <div>
-                            <label for="telefono" class="block text-sm font-bold mb-1">Teléfono</label>
-                            <input type="tel" id="telefono" name="telefono" required class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="+34 000 000 000">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paso 2: Identidad -->
-            <div class="step" data-step="2">
-                <div class="space-y-6">
-                    <div>
-                        <h2 class="text-xl font-bold mb-2">La esencia de tu negocio</h2>
-                        <p class="text-text-light/70 dark:text-text-dark/70 text-sm mb-6">Cuéntame qué haces y qué quieres conseguir.</p>
-                    </div>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="proposito" class="block text-sm font-bold mb-1">¿Cuál es el propósito principal de la web?</label>
-                            <input type="text" id="proposito" name="proposito" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Ej: App de finanzas, tienda de ropa, portfolio...">
-                        </div>
-                        <div>
-                            <label for="objetivo" class="block text-sm font-bold mb-1">Objetivo Principal</label>
-                            <select id="objetivo" name="objetivo" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary">
-                                <option value="vender">Vender</option>
-                                <option value="captar-leads">Captar leads</option>
-                                <option value="imagen-marca">Imagen de marca</option>
-                                <option value="otro">Otro</option>
-                            </select>
-                        </div>
-                        <div id="objetivo-otro-container" class="hidden">
-                            <label for="objetivo-otro" class="block text-sm font-bold mb-1">Especifica tu objetivo</label>
-                            <input type="text" id="objetivo-otro" name="objetivo-otro" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Cuéntame más...">
-                        </div>
-                        <div>
-                            <label for="elevator-pitch" class="block text-sm font-bold mb-1">Elevator Pitch</label>
-                            <textarea id="elevator-pitch" name="elevator-pitch" rows="3" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Describe tu negocio en dos frases. ¿Qué problema resuelves?"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paso 3: El público -->
-            <div class="step" data-step="3">
-                <div class="space-y-6">
-                    <div>
-                        <h2 class="text-xl font-bold mb-2">Tu público ideal</h2>
-                        <p class="text-text-light/70 dark:text-text-dark/70 text-sm mb-6">¿A quién nos dirigimos y qué queremos que hagan?</p>
-                    </div>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="publico" class="block text-sm font-bold mb-1">¿A quién nos dirigimos?</label>
-                            <input type="text" id="publico" name="publico" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Ej: Adolescentes, profesionales de medicina...">
-                        </div>
-                        <div>
-                            <label for="accion-principal" class="block text-sm font-bold mb-1">Acción principal</label>
-                            <input type="text" id="accion-principal" name="accion-principal" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="¿Qué es lo primero que quieres que haga el usuario al entrar?">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paso 4: Experiencia -->
-            <div class="step" data-step="4">
-                <div class="space-y-6">
-                    <div>
-                        <h2 class="text-xl font-bold mb-2">Estructura y Navegación</h2>
-                        <p class="text-text-light/70 dark:text-text-dark/70 text-sm mb-6">Define las piezas fundamentales de tu web.</p>
-                    </div>
-                    <div class="space-y-4">
-                        <span class="block text-sm font-bold mb-2">Secciones deseadas</span>
-                        <div class="grid grid-cols-2 gap-3">
-                            <label class="flex items-center gap-3 p-3 rounded-xl border border-secondary/20 bg-white/40 cursor-pointer hover:bg-white/60 transition-colors">
-                                <input type="checkbox" name="secciones" value="sobre-mi" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm">Sobre mí</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3 rounded-xl border border-secondary/20 bg-white/40 cursor-pointer hover:bg-white/60 transition-colors">
-                                <input type="checkbox" name="secciones" value="servicios" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm">Servicios</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3 rounded-xl border border-secondary/20 bg-white/40 cursor-pointer hover:bg-white/60 transition-colors">
-                                <input type="checkbox" name="secciones" value="contacto" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm">Contacto</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3 rounded-xl border border-secondary/20 bg-white/40 cursor-pointer hover:bg-white/60 transition-colors">
-                                <input type="checkbox" name="secciones" value="blog" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm">Blog</span>
-                            </label>
-                            <label class="flex items-center gap-3 p-3 rounded-xl border border-secondary/20 bg-white/40 cursor-pointer hover:bg-white/60 transition-colors">
-                                <input type="checkbox" name="secciones" value="galeria" class="rounded text-primary focus:ring-primary">
-                                <span class="text-sm">Galería</span>
-                            </label>
-                        </div>
-                        <div>
-                            <label for="otras-secciones" class="block text-sm font-bold mb-1">Otras secciones</label>
-                            <input type="text" id="otras-secciones" name="otras-secciones" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Escribe aquí si necesitas algo más...">
-                        </div>
-                        <div>
-                            <label for="must-haves" class="block text-sm font-bold mb-1">Elementos clave (Must-haves)</label>
-                            <textarea id="must-haves" name="must-haves" rows="3" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Menciona botones o gráficos específicos (Ej: Buscador, carrusel, pasarela de pagos...)"></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paso 5: Diseño -->
-            <div class="step" data-step="5">
-                <div class="space-y-6">
-                    <div>
-                        <h2 class="text-xl font-bold mb-2">Identidad Visual</h2>
-                        <p class="text-text-light/70 dark:text-text-dark/70 text-sm mb-6">¿Cómo quieres que se sienta tu web?</p>
-                    </div>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="estilo" class="block text-sm font-bold mb-1">Estilo visual predominante</label>
-                            <select id="estilo" name="estilo" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary">
-                                <option value="minimalista">Minimalista (Limpio, mucho aire)</option>
-                                <option value="colorido">Colorido y vibrante (Energético)</option>
-                                <option value="profesional">Profesional/Corporativo (Serio, confiable)</option>
-                                <option value="dark">Dark Mode / Elegante</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="referencias" class="block text-sm font-bold mb-1">Referencias</label>
-                            <input type="text" id="referencias" name="referencias" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Pega aquí 2 o 3 enlaces de webs que te gusten">
-                        </div>
-                        <div>
-                            <label for="comentarios-extra" class="block text-sm font-bold mb-1">Comentarios extra sobre el diseño</label>
-                            <textarea id="comentarios-extra" name="comentarios-extra" rows="3" class="w-full px-4 py-3 rounded-xl border-secondary/30 bg-white/50 dark:bg-black/20 focus:ring-primary focus:border-primary" placeholder="Cualquier otra cosa que deba saber..."></textarea>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Botones de navegación -->
-            <div class="mt-10 flex justify-between items-center">
-                <button type="button" id="prev-btn" class="hidden px-6 py-3 rounded-full border border-primary/30 text-primary font-bold hover:bg-primary/5 transition-all flex items-center gap-2">
-                    <span class="material-symbols-outlined">arrow_back</span>
-                    Atrás
-                </button>
-                <div class="flex-grow"></div>
-                <button type="button" id="next-btn" class="px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:bg-opacity-90 transition-all flex items-center gap-2">
-                    Siguiente
-                    <span class="material-symbols-outlined">arrow_forward</span>
-                </button>
-                <button type="submit" id="submit-btn" class="hidden px-8 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/20 hover:bg-opacity-90 transition-all flex items-center gap-2">
-                    Enviar briefing
-                    <span class="material-symbols-outlined">send</span>
-                </button>
-            </div>
-        </form>
+    <div class="progress-top">
+      <h1 class="progress-title">Cuéntame tu <span class="hu">proyecto<svg viewBox="0 0 110 8" fill="none"><path d="M2,5 Q28,1 55,4 Q82,7 108,4" stroke="#E67E22" stroke-width="2.2" stroke-linecap="round"/></svg></span></h1>
     </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-bar"></div>
+    </div>
+    <div class="step-pills">
+      <div class="pill active" id="pill-1"><span class="ms">person</span>Contacto</div>
+      <div class="pill" id="pill-2"><span class="ms">storefront</span>Negocio</div>
+      <div class="pill" id="pill-3"><span class="ms">groups</span>Público</div>
+      <div class="pill" id="pill-4"><span class="ms">view_quilt</span>Estructura</div>
+      <div class="pill" id="pill-5"><span class="ms">palette</span>Visual</div>
+    </div>
+  </div>
+
+  <!-- FORM CARD -->
+  <div class="form-card">
+    <form id="briefing-form" name="briefing-cliente" method="POST" data-netlify="true">
+      <input type="hidden" name="form-name" value="briefing-cliente">
+
+      <!-- PASO 1 -->
+      <div class="step active" data-step="1">
+        <p class="step-eyebrow">Empezamos</p>
+        <h2 class="step-h2">Datos de contacto</h2>
+        <p class="step-sub">Necesito saber a quién tengo que responder.</p>
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="María García">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required placeholder="tu@email.com">
+        </div>
+        <div class="field">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" required placeholder="+34 000 000 000">
+        </div>
+      </div>
+
+      <!-- PASO 2 -->
+      <div class="step" data-step="2">
+        <p class="step-eyebrow">Tu negocio</p>
+        <h2 class="step-h2">La esencia del proyecto</h2>
+        <p class="step-sub">Cuéntame qué haces y qué quieres conseguir con la web.</p>
+        <div class="field">
+          <label for="proposito">¿Cuál es el propósito principal de la web?</label>
+          <input type="text" id="proposito" name="proposito" placeholder="Ej: Tienda de ropa, consulta de psicología, academia...">
+        </div>
+        <div class="field">
+          <label for="objetivo">Objetivo principal</label>
+          <select id="objetivo" name="objetivo">
+            <option value="vender">Vender productos o servicios</option>
+            <option value="captar-leads">Captar clientes o leads</option>
+            <option value="imagen-marca">Imagen de marca y presencia online</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div class="field hidden" id="objetivo-otro-container">
+          <label for="objetivo-otro">Especifica tu objetivo</label>
+          <input type="text" id="objetivo-otro" name="objetivo-otro" placeholder="Cuéntame más...">
+        </div>
+        <div class="field">
+          <label for="elevator-pitch">Descríbete en dos frases</label>
+          <textarea id="elevator-pitch" name="elevator-pitch" placeholder="¿Qué haces? ¿Qué problema resuelves? ¿Por qué tú y no la competencia?"></textarea>
+        </div>
+      </div>
+
+      <!-- PASO 3 -->
+      <div class="step" data-step="3">
+        <p class="step-eyebrow">Tu cliente</p>
+        <h2 class="step-h2">Tu público ideal</h2>
+        <p class="step-sub">¿A quién nos dirigimos y qué queremos que hagan cuando lleguen?</p>
+        <div class="field">
+          <label for="publico">¿A quién va dirigida la web?</label>
+          <input type="text" id="publico" name="publico" placeholder="Ej: Mujeres de 25-40 años, empresas locales, padres con hijos...">
+        </div>
+        <div class="field">
+          <label for="accion-principal">Acción principal que debe hacer el usuario</label>
+          <input type="text" id="accion-principal" name="accion-principal" placeholder="Ej: Reservar cita, comprar, rellenar un formulario...">
+        </div>
+      </div>
+
+      <!-- PASO 4 -->
+      <div class="step" data-step="4">
+        <p class="step-eyebrow">Estructura</p>
+        <h2 class="step-h2">Secciones y contenido</h2>
+        <p class="step-sub">Define qué secciones necesitas y qué no puede faltar.</p>
+        <label style="margin-bottom:.75rem">Secciones que quieres incluir</label>
+        <div class="checkbox-grid" id="secciones-grid">
+          <label class="checkbox-label">
+            <input type="checkbox" name="secciones" value="sobre-mi">
+            <span>Sobre mí</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="secciones" value="servicios">
+            <span>Servicios</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="secciones" value="contacto">
+            <span>Contacto</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="secciones" value="blog">
+            <span>Blog</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="secciones" value="galeria">
+            <span>Galería</span>
+          </label>
+          <label class="checkbox-label">
+            <input type="checkbox" name="secciones" value="precios">
+            <span>Precios</span>
+          </label>
+        </div>
+        <div class="field">
+          <label for="otras-secciones">Otras secciones o funcionalidades</label>
+          <input type="text" id="otras-secciones" name="otras-secciones" placeholder="Reservas, tienda, área privada...">
+        </div>
+        <div class="field">
+          <label for="must-haves">Elementos que no pueden faltar</label>
+          <textarea id="must-haves" name="must-haves" placeholder="Botones de WhatsApp, buscador, formulario de contacto, carrusel de fotos..."></textarea>
+        </div>
+      </div>
+
+      <!-- PASO 5 -->
+      <div class="step" data-step="5">
+        <p class="step-eyebrow">Identidad visual</p>
+        <h2 class="step-h2">¿Cómo quieres que se sienta?</h2>
+        <p class="step-sub">El tono visual lo es todo. Cuéntame qué te transmite.</p>
+        <div class="field">
+          <label for="estilo">Estilo visual</label>
+          <select id="estilo" name="estilo">
+            <option value="minimalista">Minimalista — limpio, mucho espacio</option>
+            <option value="colorido">Colorido y vibrante — energético, llamativo</option>
+            <option value="profesional">Profesional — serio, corporativo, confiable</option>
+            <option value="elegante">Elegante y oscuro — premium, sofisticado</option>
+            <option value="organico">Orgánico — cálido, natural, cercano</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="referencias">Referencias visuales</label>
+          <input type="text" id="referencias" name="referencias" placeholder="Pega 2 o 3 enlaces de webs que te gusten">
+        </div>
+        <div class="field">
+          <label for="comentarios-extra">Algo más que deba saber</label>
+          <textarea id="comentarios-extra" name="comentarios-extra" placeholder="Colores de marca, tipografías, cosas que no quieres que aparezcan..."></textarea>
+        </div>
+      </div>
+
+      <!-- SUCCESS (hidden, shown via JS after submit) -->
+      <div id="success-screen">
+        <div class="success-icon"><span class="ms">check</span></div>
+        <h2 class="success-h">Recibido. Gracias.</h2>
+        <p class="success-p">Te respondo en menos de 24 horas. Mientras tanto, si tienes algo más que contarme puedes escribirme directamente por WhatsApp.</p>
+        <a href="index.html" class="btn-home">
+          <span class="ms">arrow_back</span>
+          Volver al inicio
+        </a>
+      </div>
+
+    </form>
+
+    <!-- NAV BUTTONS (outside form steps, inside card) -->
+    <div class="form-nav" id="form-nav">
+      <button type="button" id="prev-btn" class="btn-prev hidden">
+        <span class="ms">arrow_back</span>
+        Atrás
+      </button>
+      <div style="flex:1"></div>
+      <button type="button" id="next-btn" class="btn-next">
+        Siguiente
+        <span class="ms">arrow_forward</span>
+      </button>
+      <button type="button" id="submit-btn" class="btn-submit hidden">
+        Enviar briefing
+        <span class="ms">send</span>
+      </button>
+    </div>
+  </div>
+
 </main>
 
 <script>
-    let currentStep = 1;
-    const totalSteps = 5;
-    const form = document.querySelector('form');
-    const steps = document.querySelectorAll('.step');
-    const nextBtn = document.getElementById('next-btn');
-    const prevBtn = document.getElementById('prev-btn');
-    const submitBtn = document.getElementById('submit-btn');
-    const progressBar = document.getElementById('progress-bar');
-    const stepIndicator = document.getElementById('step-indicator');
+let currentStep = 1;
+const totalSteps = 5;
+const steps = document.querySelectorAll('.step');
+const nextBtn = document.getElementById('next-btn');
+const prevBtn = document.getElementById('prev-btn');
+const submitBtn = document.getElementById('submit-btn');
+const progressBar = document.getElementById('progress-bar');
+const objetivoSelect = document.getElementById('objetivo');
+const objetivoOtroContainer = document.getElementById('objetivo-otro-container');
+const formNav = document.getElementById('form-nav');
+const successScreen = document.getElementById('success-screen');
 
-    const objetivoSelect = document.getElementById('objetivo');
-    const objetivoOtroContainer = document.getElementById('objetivo-otro-container');
+const pillLabels = ['Contacto','Negocio','Público','Estructura','Visual'];
+const pillIcons  = ['person','storefront','groups','view_quilt','palette'];
 
-    function updateForm() {
-        steps.forEach(step => {
-            step.classList.remove('active');
-            if (parseInt(step.dataset.step) === currentStep) {
-                step.classList.add('active');
-            }
-        });
+function updateUI() {
+  steps.forEach(step => {
+    step.classList.toggle('active', parseInt(step.dataset.step) === currentStep);
+  });
 
-        // Update progress bar
-        const progress = (currentStep / totalSteps) * 100;
-        progressBar.style.width = `${progress}%`;
-        stepIndicator.innerText = `Paso ${currentStep} de ${totalSteps}`;
+  progressBar.style.width = `${(currentStep / totalSteps) * 100}%`;
 
-        // Update buttons
-        if (currentStep === 1) {
-            prevBtn.classList.add('hidden');
-        } else {
-            prevBtn.classList.remove('hidden');
-        }
-
-        if (currentStep === totalSteps) {
-            nextBtn.classList.add('hidden');
-            submitBtn.classList.remove('hidden');
-        } else {
-            nextBtn.classList.remove('hidden');
-            submitBtn.classList.add('hidden');
-        }
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+  for(let i = 1; i <= totalSteps; i++){
+    const pill = document.getElementById(`pill-${i}`);
+    if(!pill) continue;
+    pill.classList.remove('active','done');
+    if(i === currentStep){
+      pill.classList.add('active');
+      pill.innerHTML = `<span class="ms">${pillIcons[i-1]}</span>${pillLabels[i-1]}`;
+    } else if(i < currentStep){
+      pill.classList.add('done');
+      pill.innerHTML = `<span class="ms">check</span>${pillLabels[i-1]}`;
+    } else {
+      pill.innerHTML = `<span class="ms">${pillIcons[i-1]}</span>${pillLabels[i-1]}`;
     }
+  }
 
-    nextBtn.addEventListener('click', () => {
-        // Basic validation for Step 1
-        if (currentStep === 1) {
-            const inputs = steps[0].querySelectorAll('input[required]');
-            let valid = true;
-            inputs.forEach(input => {
-                if (!input.value) {
-                    input.classList.add('border-red-500');
-                    valid = false;
-                } else {
-                    input.classList.remove('border-red-500');
-                }
-            });
-            if (!valid) return;
-        }
+  // Scroll active pill into view on mobile
+  const activePill = document.getElementById(`pill-${currentStep}`);
+  if(activePill) activePill.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
 
-        if (currentStep < totalSteps) {
-            currentStep++;
-            updateForm();
-        }
-    });
+  prevBtn.classList.toggle('hidden', currentStep === 1);
+  nextBtn.classList.toggle('hidden', currentStep === totalSteps);
+  submitBtn.classList.toggle('hidden', currentStep !== totalSteps);
 
-    prevBtn.addEventListener('click', () => {
-        if (currentStep > 1) {
-            currentStep--;
-            updateForm();
-        }
-    });
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
 
-    objetivoSelect.addEventListener('change', (e) => {
-        if (e.target.value === 'otro') {
-            objetivoOtroContainer.classList.remove('hidden');
-        } else {
-            objetivoOtroContainer.classList.add('hidden');
-        }
-    });
+function validateStep(step) {
+  const inputs = document.querySelector(`[data-step="${step}"]`).querySelectorAll('input[required]');
+  let valid = true;
+  inputs.forEach(input => {
+    if(!input.value.trim()){
+      input.classList.add('error');
+      input.addEventListener('input', () => input.classList.remove('error'), {once:true});
+      valid = false;
+    }
+  });
+  return valid;
+}
 
-    form.addEventListener('submit', (e) => {
-        // Let Netlify handle the submission
-    });
+nextBtn.addEventListener('click', () => {
+  if(!validateStep(currentStep)) return;
+  if(currentStep < totalSteps){ currentStep++; updateUI('next'); }
+});
+
+prevBtn.addEventListener('click', () => {
+  if(currentStep > 1){ currentStep--; updateUI('prev'); }
+});
+
+objetivoSelect.addEventListener('change', e => {
+  objetivoOtroContainer.classList.toggle('hidden', e.target.value !== 'otro');
+});
+
+// Checkbox visual toggle
+document.querySelectorAll('.checkbox-label input[type=checkbox]').forEach(cb => {
+  cb.addEventListener('change', () => {
+    cb.closest('.checkbox-label').classList.toggle('checked', cb.checked);
+  });
+});
+
+// Submit via Netlify
+submitBtn.addEventListener('click', () => {
+  const form = document.getElementById('briefing-form');
+  const data = new FormData(form);
+
+  fetch('/', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: new URLSearchParams(data).toString()
+  })
+  .then(() => {
+    steps.forEach(s => s.classList.remove('active'));
+    formNav.style.display = 'none';
+    successScreen.classList.add('show');
+    progressBar.style.width = '100%';
+    for(let i=1;i<=totalSteps;i++){
+      const pill=document.getElementById(`pill-${i}`);
+      if(pill){pill.classList.remove('active');pill.classList.add('done');pill.innerHTML=`<span class="ms">check</span>${pillLabels[i-1]}`;}
+    }
+  })
+  .catch(() => {
+    // Fallback: native submit
+    form.submit();
+  });
+});
+
+// Init
+updateUI();
 </script>
-
 </body>
 </html>
