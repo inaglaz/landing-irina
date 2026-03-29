@@ -351,17 +351,17 @@ nav.menu-open{z-index:211}
 .abov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(139,94,60,.2),transparent)}
 
 /* Left column: scroll container */
-.abl{padding:5rem 4rem 5rem 5rem;position:relative;background:var(--dk)}
+.abl{padding:3rem 4rem 3rem 5rem;position:relative;background:var(--dk)}
 
 /* Stack area: cards pile on top of each other */
-.ab-stack{position:relative;padding-top:2rem;padding-bottom:6rem}
+.ab-stack{position:relative;padding-top:1rem;padding-bottom:2rem}
 
 /* Each card */
 .abch{
   position:sticky;
   border-radius:20px;
   padding:2.5rem 2.75rem;
-  margin-bottom:1.5rem;
+  margin-bottom:1rem;
   background:rgba(255,255,255,.07);
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
@@ -399,7 +399,7 @@ nav.menu-open{z-index:211}
   /* Outer tall container: provides the scroll distance */
   .mob-stack-outer{
     position:relative;
-    height:420vh;
+    height:250vh;
     background:#2C1F14;
   }
 
@@ -450,8 +450,7 @@ nav.menu-open{z-index:211}
     -webkit-backdrop-filter:blur(14px);
     border:.5px solid rgba(255,255,255,.12);
     /* Start below viewport */
-    transform:translateY(100vh);
-    transition:transform .9s cubic-bezier(.22,1,.36,1);
+    transform:translateY(100svh);
     will-change:transform;
   }
   /* Final stacked positions — 40px peek gap for eyebrow line */
@@ -459,8 +458,6 @@ nav.menu-open{z-index:211}
   .mob-ch:nth-child(2){top:235px;z-index:2;background:rgba(52,36,22,.95)}
   .mob-ch:nth-child(3){top:275px;z-index:3;background:rgba(60,41,24,.97)}
   .mob-ch:nth-child(4){top:315px;z-index:4;background:rgba(68,46,26,.99)}
-  /* When stacked: slide to its top position */
-  .mob-ch.in-place{transform:translateY(0)}
   .mob-ch .aey{margin-bottom:.75rem}
   .mob-ch .ah2{font-size:1.3rem;margin-bottom:.75rem}
   .mob-ch .abody{font-size:.84rem}
@@ -1114,13 +1111,6 @@ if(mobOuter){
     document.getElementById('mc3'),
     document.getElementById('mc4')
   ];
-  const initObs = new IntersectionObserver(entries => {
-    if(entries[0].isIntersecting){
-      mobCards[0].classList.add('in-place');
-      initObs.unobserve(mobOuter);
-    }
-  }, {threshold:0.05});
-  initObs.observe(mobOuter);
 
   window.addEventListener('scroll', () => {
     const rect = mobOuter.getBoundingClientRect();
@@ -1129,8 +1119,15 @@ if(mobOuter){
     const scrolled = -rect.top;
     if(scrolled < 0) return;
     const progress = Math.min(scrolled / total, 1);
+
+    // Staggered scrubbing: animation distributed across 100% scroll
     mobCards.forEach((c, i) => {
-      if(c) c.classList.toggle('in-place', progress >= i * 0.25);
+      if(!c) return;
+      // Each card has a 40% progress window to animate, starting every 20%
+      const start = i * 0.2;
+      const end = Math.min(start + 0.4, 1);
+      const cardProgress = Math.min(Math.max((progress - start) / (end - start), 0), 1);
+      c.style.transform = `translateY(${(1 - cardProgress) * 100}svh)`;
     });
   }, {passive:true});
 }
