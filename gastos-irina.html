@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Mis Gastos — Irina</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde: #2D6A4F;
+    --verde-light: #D8F3DC;
+    --verde-mid: #74C69D;
+    --amarillo: #E9C46A;
+    --amarillo-light: #FFF3CD;
+    --rojo: #E63946;
+    --rojo-light: #FFE0E3;
+    --fondo: #F8F4EF;
+    --card: #FFFFFF;
+    --texto: #1A1A1A;
+    --texto2: #6B6560;
+    --borde: #E8E2DA;
+    --presupuesto: 205;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    min-height: 100vh;
+    padding-bottom: 100px;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--verde);
+    color: white;
+    padding: 28px 20px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.3px;
+  }
+  .mes-selector {
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    padding: 6px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .mes-selector option { color: var(--texto); background: white; }
+
+  .budget-ring {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .ring-wrap {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+  }
+  .ring-wrap svg { transform: rotate(-90deg); }
+  .ring-center {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .ring-pct { font-size: 18px; font-weight: 500; color: white; }
+  .ring-lbl { font-size: 9px; color: rgba(255,255,255,0.7); letter-spacing: 0.5px; text-transform: uppercase; }
+  .budget-info { flex: 1; }
+  .budget-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .budget-label { font-size: 11px; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.5px; }
+  .budget-val { font-size: 13px; font-weight: 500; color: white; }
+  .budget-bar { height: 6px; background: rgba(255,255,255,0.2); border-radius: 99px; overflow: hidden; }
+  .budget-bar-fill { height: 100%; border-radius: 99px; transition: width 0.4s ease; }
+
+  /* SECCIONES */
+  .section { padding: 16px 16px 0; }
+  .section-title {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--texto2);
+    margin-bottom: 10px;
+    padding-left: 2px;
+  }
+
+  /* CATEGORÍAS FIJAS */
+  .cat-card {
+    background: var(--card);
+    border-radius: 16px;
+    border: 1px solid var(--borde);
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  .cat-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .cat-icon {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .cat-info { flex: 1; min-width: 0; }
+  .cat-name { font-size: 14px; font-weight: 500; }
+  .cat-sub { font-size: 12px; color: var(--texto2); margin-top: 1px; }
+  .cat-amounts { text-align: right; }
+  .cat-spent { font-size: 16px; font-weight: 500; }
+  .cat-budget { font-size: 11px; color: var(--texto2); }
+  .cat-bar-wrap { height: 4px; background: var(--fondo); }
+  .cat-bar-fill { height: 100%; transition: width 0.4s; }
+
+  /* GASTOS LISTA */
+  .gastos-list { padding: 0 16px 12px; }
+  .gasto-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--borde);
+    gap: 8px;
+  }
+  .gasto-item:last-child { border-bottom: none; }
+  .gasto-desc { font-size: 13px; color: var(--texto); flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .gasto-fecha { font-size: 11px; color: var(--texto2); white-space: nowrap; }
+  .gasto-importe { font-size: 14px; font-weight: 500; white-space: nowrap; }
+  .gasto-del { background: none; border: none; color: var(--texto2); font-size: 16px; cursor: pointer; padding: 4px; line-height: 1; flex-shrink: 0; }
+  .gasto-del:active { color: var(--rojo); }
+
+  /* AÑADIR GASTO */
+  .add-form {
+    padding: 12px 16px;
+    border-top: 1px solid var(--borde);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .add-desc {
+    flex: 1;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 8px 12px;
+    background: var(--fondo);
+    color: var(--texto);
+    min-width: 0;
+  }
+  .add-desc:focus { outline: none; border-color: var(--verde); }
+  .add-importe {
+    width: 80px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 8px 10px;
+    background: var(--fondo);
+    color: var(--texto);
+    text-align: right;
+  }
+  .add-importe:focus { outline: none; border-color: var(--verde); }
+  .add-btn {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: opacity 0.15s;
+  }
+  .add-btn:active { opacity: 0.7; }
+
+  /* RESUMEN BOTTOM */
+  .resumen-bottom {
+    background: var(--card);
+    border-radius: 16px;
+    border: 1px solid var(--borde);
+    padding: 16px;
+    margin-top: 4px;
+  }
+  .resumen-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--borde);
+    font-size: 13px;
+  }
+  .resumen-row:last-child { border-bottom: none; }
+  .resumen-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0 0;
+    margin-top: 4px;
+  }
+  .resumen-total-lbl { font-family: 'DM Serif Display', serif; font-size: 16px; }
+  .resumen-total-val { font-size: 20px; font-weight: 500; }
+
+  /* ESTADO CHIPS */
+  .chip {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 99px;
+  }
+  .chip-ok { background: var(--verde-light); color: var(--verde); }
+  .chip-warn { background: var(--amarillo-light); color: #9A6F00; }
+  .chip-bad { background: var(--rojo-light); color: var(--rojo); }
+
+  /* VACÍO */
+  .empty { padding: 16px; text-align: center; font-size: 13px; color: var(--texto2); font-style: italic; }
+
+  /* FAB reset mes */
+  .fab {
+    position: fixed;
+    bottom: 24px; right: 20px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(45,106,79,0.35);
+    display: flex; align-items: center; gap: 6px;
+    transition: transform 0.15s;
+  }
+  .fab:active { transform: scale(0.96); }
+
+  /* colores categorías */
+  .color-comida   { background: #FFF0DC; }
+  .color-bebe     { background: #F0ECFF; }
+  .color-perros   { background: #E8F5E9; }
+  .color-gasolina { background: #E3F2FD; }
+  .color-otros    { background: #F3E8FF; }
+
+  .bar-comida   { background: #F4A261; }
+  .bar-bebe     { background: #9B8EC4; }
+  .bar-perros   { background: #52B788; }
+  .bar-gasolina { background: #4FC3F7; }
+  .bar-otros    { background: #CE93D8; }
+
+  .spent-comida   { color: #C1440E; }
+  .spent-bebe     { color: #5E35B1; }
+  .spent-perros   { color: #1B5E20; }
+  .spent-gasolina { color: #0277BD; }
+  .spent-otros    { color: #6A1B9A; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <h1>Mis Gastos</h1>
+      <div style="font-size:12px; color:rgba(255,255,255,0.65); margin-top:2px;">Presupuesto flexible mensual</div>
+    </div>
+    <select class="mes-selector" id="mes-sel" onchange="cambiarMes()">
+      <option value="2026-04">Abril 2026</option>
+      <option value="2026-05">Mayo 2026</option>
+      <option value="2026-06">Junio 2026</option>
+      <option value="2026-07">Julio 2026</option>
+      <option value="2026-08">Agosto 2026</option>
+      <option value="2026-09">Septiembre 2026</option>
+      <option value="2026-10">Octubre 2026</option>
+      <option value="2026-11">Noviembre 2026</option>
+      <option value="2026-12">Diciembre 2026</option>
+    </select>
+  </div>
+
+  <div class="budget-ring">
+    <div class="ring-wrap">
+      <svg width="80" height="80" viewBox="0 0 80 80">
+        <circle cx="40" cy="40" r="32" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
+        <circle id="ring-circle" cx="40" cy="40" r="32" fill="none" stroke="white" stroke-width="8"
+          stroke-dasharray="201" stroke-dashoffset="201" stroke-linecap="round"/>
+      </svg>
+      <div class="ring-center">
+        <div class="ring-pct" id="ring-pct">0%</div>
+        <div class="ring-lbl">gastado</div>
+      </div>
+    </div>
+    <div class="budget-info">
+      <div class="budget-row">
+        <span class="budget-label">Presupuesto</span>
+        <span class="budget-val" id="hdr-presupuesto">205 €</span>
+      </div>
+      <div class="budget-row">
+        <span class="budget-label">Gastado</span>
+        <span class="budget-val" id="hdr-gastado">0 €</span>
+      </div>
+      <div class="budget-row">
+        <span class="budget-label">Queda</span>
+        <span class="budget-val" id="hdr-queda" style="color:#74C69D;">205 €</span>
+      </div>
+      <div class="budget-bar">
+        <div class="budget-bar-fill" id="hdr-bar" style="width:0%; background:#74C69D;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CATEGORÍAS -->
+<div class="section">
+  <div class="section-title">Categorías</div>
+</div>
+
+<div id="cats-container" style="padding: 0 16px;"></div>
+
+<!-- RESUMEN -->
+<div class="section" style="padding-top:20px;">
+  <div class="section-title">Resumen del mes</div>
+  <div class="resumen-bottom">
+    <div id="resumen-rows"></div>
+    <div class="resumen-total">
+      <span class="resumen-total-lbl">Disponible</span>
+      <span class="resumen-total-val" id="resumen-queda">205 €</span>
+    </div>
+  </div>
+</div>
+
+<button class="fab" onclick="resetMes()">↺ Nuevo mes</button>
+
+<script>
+const CATS = [
+  { id:'comida',   nombre:'Comida',          icon:'🛒', presupuesto:400, color:'color-comida',   bar:'bar-comida',   spent:'spent-comida',   placeholder:'Mercadona, fruta...' },
+  { id:'bebe',     nombre:'Bebé',            icon:'👶', presupuesto:135, color:'color-bebe',     bar:'bar-bebe',     spent:'spent-bebe',     placeholder:'Toallitas, guardería...' },
+  { id:'perros',   nombre:'Perros',          icon:'🐕', presupuesto:225, color:'color-perros',   bar:'bar-perros',   spent:'spent-perros',   placeholder:'Brown, Lotus, vet...' },
+  { id:'gasolina', nombre:'Gasolina',        icon:'⛽', presupuesto:50,  color:'color-gasolina', bar:'bar-gasolina', spent:'spent-gasolina', placeholder:'Repostaje...' },
+  { id:'otros',    nombre:'Otros',           icon:'🛍', presupuesto:205, color:'color-otros',    bar:'bar-otros',    spent:'spent-otros',    placeholder:'Describe el gasto...' },
+];
+
+const TOTAL_PRESUPUESTO = CATS.reduce((s,c) => s + c.presupuesto, 0);
+
+let mesActual = '2026-04';
+let datos = {};
+
+function keyMes(mes) { return 'gastos_' + mes; }
+
+function cargarDatos(mes) {
+  try {
+    const raw = localStorage.getItem(keyMes(mes));
+    return raw ? JSON.parse(raw) : {};
+  } catch(e) { return {}; }
+}
+
+function guardarDatos() {
+  try { localStorage.setItem(keyMes(mesActual), JSON.stringify(datos)); } catch(e) {}
+}
+
+function gastosCat(catId) {
+  return datos[catId] || [];
+}
+
+function totalCat(catId) {
+  return gastosCat(catId).reduce((s,g) => s + g.importe, 0);
+}
+
+function totalGlobal() {
+  return CATS.reduce((s,c) => s + totalCat(c.id), 0);
+}
+
+function fmtEur(n) { return Math.round(n * 100) / 100 + ' €'; }
+
+function fmtFecha(iso) {
+  const d = new Date(iso);
+  return d.getDate() + '/' + (d.getMonth()+1);
+}
+
+function chipClass(gastado, presupuesto) {
+  const pct = gastado / presupuesto;
+  if (pct < 0.7) return 'chip-ok';
+  if (pct < 1.0) return 'chip-warn';
+  return 'chip-bad';
+}
+
+function chipLabel(gastado, presupuesto) {
+  const pct = gastado / presupuesto;
+  if (pct < 0.7) return 'bien';
+  if (pct < 1.0) return 'ojo';
+  return 'pasado';
+}
+
+function barColor(gastado, presupuesto) {
+  const pct = gastado / presupuesto;
+  if (pct < 0.7) return '#52B788';
+  if (pct < 1.0) return '#E9C46A';
+  return '#E63946';
+}
+
+function renderHeader() {
+  const total = totalGlobal();
+  const queda = TOTAL_PRESUPUESTO - total;
+  const pct = Math.min(1, total / TOTAL_PRESUPUESTO);
+  const circum = 201;
+  const offset = circum - (pct * circum);
+
+  document.getElementById('ring-circle').style.strokeDashoffset = offset;
+  document.getElementById('ring-circle').style.stroke = pct >= 1 ? '#E63946' : pct >= 0.8 ? '#E9C46A' : 'white';
+  document.getElementById('ring-pct').textContent = Math.round(pct * 100) + '%';
+  document.getElementById('hdr-presupuesto').textContent = fmtEur(TOTAL_PRESUPUESTO);
+  document.getElementById('hdr-gastado').textContent = fmtEur(total);
+  document.getElementById('hdr-queda').textContent = fmtEur(Math.max(0, queda));
+  document.getElementById('hdr-queda').style.color = queda < 0 ? '#E63946' : '#74C69D';
+  const barFill = document.getElementById('hdr-bar');
+  barFill.style.width = Math.min(100, pct * 100) + '%';
+  barFill.style.background = pct >= 1 ? '#E63946' : pct >= 0.8 ? '#E9C46A' : '#74C69D';
+}
+
+function renderCats() {
+  const container = document.getElementById('cats-container');
+  container.innerHTML = '';
+  CATS.forEach(cat => {
+    const gastado = totalCat(cat.id);
+    const pct = Math.min(1, gastado / cat.presupuesto);
+    const gastos = gastosCat(cat.id);
+
+    const div = document.createElement('div');
+    div.className = 'cat-card';
+    div.innerHTML = `
+      <div class="cat-header" onclick="toggleCat('${cat.id}')">
+        <div class="cat-icon ${cat.color}">${cat.icon}</div>
+        <div class="cat-info">
+          <div class="cat-name">${cat.nombre}</div>
+          <div class="cat-sub">${gastos.length} gasto${gastos.length !== 1 ? 's' : ''} · presup. ${fmtEur(cat.presupuesto)}</div>
+        </div>
+        <div class="cat-amounts">
+          <div class="cat-spent ${cat.spent}">${fmtEur(gastado)}</div>
+          <div style="margin-top:2px;"><span class="chip ${chipClass(gastado, cat.presupuesto)}">${chipLabel(gastado, cat.presupuesto)}</span></div>
+        </div>
+      </div>
+      <div class="cat-bar-wrap">
+        <div class="cat-bar-fill" style="width:${pct*100}%; background:${barColor(gastado, cat.presupuesto)};"></div>
+      </div>
+      <div id="panel-${cat.id}" style="display:none;">
+        <div class="gastos-list" id="list-${cat.id}"></div>
+        <div class="add-form">
+          <input class="add-desc" type="text" id="desc-${cat.id}" placeholder="${cat.placeholder}" maxlength="40">
+          <input class="add-importe" type="number" id="imp-${cat.id}" placeholder="0" min="0" step="0.01">
+          <button class="add-btn" onclick="addGasto('${cat.id}')">+</button>
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+    renderGastosList(cat.id);
+  });
+}
+
+function renderGastosList(catId) {
+  const list = document.getElementById('list-' + catId);
+  if (!list) return;
+  const gastos = gastosCat(catId);
+  if (gastos.length === 0) {
+    list.innerHTML = '<div class="empty">Sin gastos aún</div>';
+    return;
+  }
+  list.innerHTML = gastos.slice().reverse().map((g, i) => {
+    const realIdx = gastos.length - 1 - i;
+    return `<div class="gasto-item">
+      <span class="gasto-desc">${g.desc || 'Sin descripción'}</span>
+      <span class="gasto-fecha">${fmtFecha(g.fecha)}</span>
+      <span class="gasto-importe">${fmtEur(g.importe)}</span>
+      <button class="gasto-del" onclick="delGasto('${catId}', ${realIdx})">×</button>
+    </div>`;
+  }).join('');
+}
+
+function renderResumen() {
+  const rows = document.getElementById('resumen-rows');
+  const total = totalGlobal();
+  const queda = TOTAL_PRESUPUESTO - total;
+
+  rows.innerHTML = CATS.map(cat => {
+    const g = totalCat(cat.id);
+    const resto = cat.presupuesto - g;
+    return `<div class="resumen-row">
+      <span style="font-size:13px; color:var(--texto2);">${cat.icon} ${cat.nombre}</span>
+      <span style="font-size:13px; font-weight:500; color:${resto < 0 ? 'var(--rojo)' : 'var(--texto)'};">${fmtEur(resto >= 0 ? resto : -resto)}${resto < 0 ? ' pasado' : ' queda'}</span>
+    </div>`;
+  }).join('');
+
+  document.getElementById('resumen-queda').textContent = fmtEur(Math.abs(queda));
+  document.getElementById('resumen-queda').style.color = queda < 0 ? 'var(--rojo)' : 'var(--verde)';
+}
+
+function toggleCat(catId) {
+  const panel = document.getElementById('panel-' + catId);
+  const isOpen = panel.style.display !== 'none';
+  document.querySelectorAll('[id^="panel-"]').forEach(p => p.style.display = 'none');
+  if (!isOpen) {
+    panel.style.display = 'block';
+    setTimeout(() => {
+      document.getElementById('desc-' + catId)?.focus();
+    }, 50);
+  }
+}
+
+function addGasto(catId) {
+  const descEl = document.getElementById('desc-' + catId);
+  const impEl  = document.getElementById('imp-' + catId);
+  const importe = parseFloat(impEl.value);
+  if (!importe || importe <= 0) { impEl.focus(); return; }
+  const desc = descEl.value.trim() || 'Gasto';
+
+  if (!datos[catId]) datos[catId] = [];
+  datos[catId].push({ desc, importe, fecha: new Date().toISOString() });
+  guardarDatos();
+  descEl.value = '';
+  impEl.value = '';
+  renderAll();
+  descEl.focus();
+}
+
+function delGasto(catId, idx) {
+  if (!datos[catId]) return;
+  datos[catId].splice(idx, 1);
+  guardarDatos();
+  renderAll();
+}
+
+function cambiarMes() {
+  mesActual = document.getElementById('mes-sel').value;
+  datos = cargarDatos(mesActual);
+  renderAll();
+}
+
+function resetMes() {
+  if (!confirm('¿Empezar un mes nuevo? Los gastos actuales se borrarán.')) return;
+  datos = {};
+  guardarDatos();
+  renderAll();
+}
+
+function renderAll() {
+  renderHeader();
+  renderCats();
+  renderResumen();
+}
+
+// ENTER en inputs
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') {
+    const active = document.activeElement;
+    if (active && active.id.startsWith('desc-')) {
+      const catId = active.id.replace('desc-', '');
+      document.getElementById('imp-' + catId)?.focus();
+    } else if (active && active.id.startsWith('imp-')) {
+      const catId = active.id.replace('imp-', '');
+      addGasto(catId);
+    }
+  }
+});
+
+// Init
+const now = new Date();
+const mesInit = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
+const sel = document.getElementById('mes-sel');
+for (let o of sel.options) { if (o.value === mesInit) { sel.value = mesInit; break; } }
+mesActual = sel.value;
+datos = cargarDatos(mesActual);
+renderAll();
+</script>
+</body>
+</html>
