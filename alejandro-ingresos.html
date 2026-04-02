@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Dashboard — Alejandro</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0F1117;
+  --bg2: #161B25;
+  --bg3: #1E2535;
+  --card: #1A2030;
+  --borde: rgba(255,255,255,0.07);
+  --texto: #F0F2F7;
+  --texto2: #8892A4;
+  --texto3: #556070;
+  --verde: #00D084;
+  --verde-dim: rgba(0,208,132,0.12);
+  --amarillo: #FFB800;
+  --amarillo-dim: rgba(255,184,0,0.12);
+  --rojo: #FF4D6A;
+  --rojo-dim: rgba(255,77,106,0.12);
+  --azul: #4B91F7;
+  --azul-dim: rgba(75,145,247,0.12);
+  --morado: #A78BFA;
+  --morado-dim: rgba(167,139,250,0.12);
+  --coral: #FF8B60;
+  --coral-dim: rgba(255,139,96,0.12);
+  --objetivo: 215;
+  --dias: 19;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg);
+  color: var(--texto);
+  min-height: 100vh;
+  padding-bottom: 120px;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(160deg, #1A2540 0%, #0F1117 100%);
+  padding: 28px 20px 24px;
+  border-bottom: 1px solid var(--borde);
+}
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--texto);
+}
+.header-sub { font-size: 12px; color: var(--texto2); margin-top: 2px; }
+.mes-sel {
+  background: var(--bg3);
+  border: 1px solid var(--borde);
+  color: var(--texto);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.mes-sel option { background: #1E2535; }
+
+/* objetivo diario big */
+.obj-wrap {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.obj-circle {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  flex-shrink: 0;
+}
+.obj-circle svg { transform: rotate(-90deg); }
+.obj-center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  line-height: 1;
+}
+.obj-num { font-size: 22px; font-weight: 600; color: var(--texto); }
+.obj-lbl { font-size: 9px; color: var(--texto2); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+.obj-stats { flex: 1; }
+.stat-row { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.stat-label { font-size: 11px; color: var(--texto2); text-transform: uppercase; letter-spacing: 0.5px; }
+.stat-val { font-size: 13px; font-weight: 500; }
+.progress-bar { height: 5px; background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 99px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
+
+/* ── SECCIONES ── */
+.section { padding: 20px 16px 0; }
+.sec-title {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--texto3);
+  margin-bottom: 12px;
+}
+
+/* ── SEGMENTOS DIARIOS ── */
+.seg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.seg-card {
+  background: var(--card);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.seg-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: 16px 16px 0 0;
+}
+.seg-icon { font-size: 20px; margin-bottom: 8px; }
+.seg-name { font-size: 11px; color: var(--texto2); margin-bottom: 4px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+.seg-dia { font-size: 26px; font-weight: 600; line-height: 1; }
+.seg-mes { font-size: 11px; color: var(--texto2); margin-top: 3px; }
+.seg-bar { height: 3px; background: rgba(255,255,255,0.06); border-radius: 99px; margin-top: 10px; overflow: hidden; }
+.seg-bar-fill { height: 100%; border-radius: 99px; }
+
+.s-fijos::before { background: var(--azul); }
+.s-fijos .seg-dia { color: var(--azul); }
+.s-fijos .seg-bar-fill { background: var(--azul); }
+
+.s-laboral::before { background: var(--morado); }
+.s-laboral .seg-dia { color: var(--morado); }
+.s-laboral .seg-bar-fill { background: var(--morado); }
+
+.s-deudas::before { background: var(--coral); }
+.s-deudas .seg-dia { color: var(--coral); }
+.s-deudas .seg-bar-fill { background: var(--coral); }
+
+.s-ahorro::before { background: var(--verde); }
+.s-ahorro .seg-dia { color: var(--verde); }
+.s-ahorro .seg-bar-fill { background: var(--verde); }
+
+.s-vac::before { background: var(--amarillo); }
+.s-vac .seg-dia { color: var(--amarillo); }
+.s-vac .seg-bar-fill { background: var(--amarillo); }
+
+.s-ocio::before { background: var(--rojo); }
+.s-ocio .seg-dia { color: var(--rojo); }
+.s-ocio .seg-bar-fill { background: var(--rojo); }
+
+/* ── BARRA EVOLUTIVA ── */
+.evol-card {
+  background: var(--card);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 10px;
+}
+.evol-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 14px;
+}
+.evol-total { font-size: 32px; font-weight: 600; color: var(--texto); letter-spacing: -1px; }
+.evol-meta { text-align: right; }
+.evol-meta-val { font-size: 14px; font-weight: 500; color: var(--texto2); }
+.evol-meta-lbl { font-size: 10px; color: var(--texto3); margin-top: 1px; text-transform: uppercase; letter-spacing: 0.5px; }
+.evol-bar-wrap {
+  height: 12px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 99px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 8px;
+}
+.evol-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.5s cubic-bezier(.4,0,.2,1);
+  position: relative;
+}
+.evol-bar-objetivo {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,0.3);
+}
+.evol-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--texto3);
+}
+.dias-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 14px;
+}
+.dia-dot {
+  width: 22px; height: 22px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s;
+  border: 1px solid transparent;
+}
+.dia-dot:active { transform: scale(0.9); }
+.dia-dot.vacio { background: rgba(255,255,255,0.04); color: var(--texto3); border-color: rgba(255,255,255,0.06); }
+.dia-dot.ok { background: rgba(0,208,132,0.15); color: var(--verde); border-color: rgba(0,208,132,0.2); }
+.dia-dot.bajo { background: rgba(255,184,0,0.15); color: var(--amarillo); border-color: rgba(255,184,0,0.2); }
+.dia-dot.alto { background: rgba(75,145,247,0.15); color: var(--azul); border-color: rgba(75,145,247,0.2); }
+.dia-dot.hoy { box-shadow: 0 0 0 2px var(--texto2); }
+
+/* ── AÑADIR DÍA ── */
+.add-dia-card {
+  background: var(--card);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 10px;
+}
+.add-dia-title { font-size: 13px; font-weight: 600; color: var(--texto); margin-bottom: 14px; }
+.add-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.add-lbl { font-size: 12px; color: var(--texto2); min-width: 80px; }
+.add-inp {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  color: var(--texto);
+  text-align: right;
+}
+.add-inp:focus { outline: none; border-color: var(--verde); }
+.add-inp-date {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  color: var(--texto);
+  color-scheme: dark;
+}
+.add-inp-date:focus { outline: none; border-color: var(--verde); }
+.btn-add {
+  width: 100%;
+  background: var(--verde);
+  color: #0a1a12;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  letter-spacing: 0.3px;
+}
+.btn-add:active { opacity: 0.75; }
+
+/* ── EXCEDENTE ── */
+.excedente-card {
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.exc-bg-ok { background: var(--verde-dim); border: 1px solid rgba(0,208,132,0.2); }
+.exc-bg-bad { background: var(--rojo-dim); border: 1px solid rgba(255,77,106,0.2); }
+.exc-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; font-weight: 600; }
+.exc-label-ok { color: var(--verde); }
+.exc-label-bad { color: var(--rojo); }
+.exc-amount { font-size: 42px; font-weight: 700; letter-spacing: -2px; font-family: 'Playfair Display', serif; line-height: 1; }
+.exc-amount-ok { color: var(--verde); }
+.exc-amount-bad { color: var(--rojo); }
+.exc-sub { font-size: 12px; color: var(--texto2); margin-top: 6px; }
+.exc-desglose { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--borde); }
+.exc-row { display: flex; justify-content: space-between; font-size: 12px; padding: 4px 0; color: var(--texto2); }
+.exc-row span:last-child { font-weight: 500; color: var(--texto); }
+
+/* ── HISTORIAL ── */
+.hist-card {
+  background: var(--card);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.hist-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--borde);
+  gap: 10px;
+}
+.hist-item:last-child { border-bottom: none; }
+.hist-fecha { font-size: 12px; color: var(--texto2); min-width: 44px; }
+.hist-importe { font-size: 16px; font-weight: 600; }
+.hist-diff { font-size: 11px; padding: 2px 8px; border-radius: 99px; font-weight: 500; }
+.hist-diff-ok { background: var(--verde-dim); color: var(--verde); }
+.hist-diff-bad { background: var(--rojo-dim); color: var(--rojo); }
+.hist-diff-neu { background: var(--amarillo-dim); color: var(--amarillo); }
+.hist-del { background: none; border: none; color: var(--texto3); font-size: 18px; cursor: pointer; padding: 4px; line-height: 1; }
+.hist-del:active { color: var(--rojo); }
+.hist-empty { padding: 20px; text-align: center; font-size: 13px; color: var(--texto3); font-style: italic; }
+
+/* ── FAB ── */
+.fab {
+  position: fixed;
+  bottom: 24px; right: 20px;
+  background: var(--bg3);
+  color: var(--texto2);
+  border: 1px solid var(--borde);
+  border-radius: 50px;
+  padding: 11px 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.3px;
+}
+.fab:active { background: var(--bg2); }
+
+/* config panel */
+.config-btn {
+  background: none;
+  border: 1px solid var(--borde);
+  color: var(--texto2);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.config-panel {
+  background: var(--card);
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 10px;
+}
+.cfg-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.cfg-lbl { font-size: 12px; color: var(--texto2); min-width: 130px; }
+.cfg-inp {
+  flex: 1;
+  background: var(--bg3);
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  color: var(--texto);
+  text-align: right;
+}
+.cfg-inp:focus { outline: none; border-color: var(--verde); }
+.btn-cfg-save {
+  width: 100%;
+  background: var(--bg3);
+  color: var(--texto);
+  border: 1px solid var(--borde);
+  border-radius: 10px;
+  padding: 11px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 4px;
+}
+.btn-cfg-save:active { background: var(--bg2); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-top">
+    <div>
+      <h1>Dashboard</h1>
+      <div class="header-sub" id="hdr-sub">Alejandro · Taxi</div>
+    </div>
+    <select class="mes-sel" id="mes-sel" onchange="cambiarMes()">
+      <option value="2026-04">Abril 2026</option>
+      <option value="2026-05">Mayo 2026</option>
+      <option value="2026-06">Junio 2026</option>
+      <option value="2026-07">Julio 2026</option>
+      <option value="2026-08">Agosto 2026</option>
+      <option value="2026-09">Septiembre 2026</option>
+      <option value="2026-10">Octubre 2026</option>
+      <option value="2026-11">Noviembre 2026</option>
+      <option value="2026-12">Diciembre 2026</option>
+    </select>
+  </div>
+
+  <div class="obj-wrap">
+    <div class="obj-circle">
+      <svg width="90" height="90" viewBox="0 0 90 90">
+        <circle cx="45" cy="45" r="36" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="8"/>
+        <circle id="hdr-ring" cx="45" cy="45" r="36" fill="none" stroke="#00D084" stroke-width="8"
+          stroke-dasharray="226" stroke-dashoffset="226" stroke-linecap="round" style="transition:all 0.5s"/>
+      </svg>
+      <div class="obj-center">
+        <div class="obj-num" id="hdr-ring-pct">0%</div>
+        <div class="obj-lbl">del mes</div>
+      </div>
+    </div>
+    <div class="obj-stats">
+      <div class="stat-row">
+        <span class="stat-label">Objetivo/día</span>
+        <span class="stat-val" id="hdr-obj" style="color:var(--verde);">215 €</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Días trabajados</span>
+        <span class="stat-val" id="hdr-dias">0 / 19</span>
+      </div>
+      <div class="stat-row">
+        <span class="stat-label">Media/día</span>
+        <span class="stat-val" id="hdr-media">— €</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="hdr-bar" style="width:0%; background:var(--verde);"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEGMENTOS -->
+<div class="section">
+  <div class="sec-title">¿Para qué trabaja cada euro?</div>
+  <div class="seg-grid" id="seg-grid"></div>
+</div>
+
+<!-- BARRA EVOLUTIVA -->
+<div class="section" style="padding-top:20px;">
+  <div class="sec-title">Evolución del mes</div>
+  <div class="evol-card">
+    <div class="evol-top">
+      <div>
+        <div style="font-size:11px; color:var(--texto3); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Ingresado</div>
+        <div class="evol-total" id="evol-total">0 €</div>
+      </div>
+      <div class="evol-meta">
+        <div class="evol-meta-val" id="evol-obj-mes">— €</div>
+        <div class="evol-meta-lbl">objetivo mes</div>
+      </div>
+    </div>
+    <div class="evol-bar-wrap">
+      <div class="evol-bar-fill" id="evol-bar" style="width:0%; background:var(--verde);"></div>
+      <div class="evol-bar-objetivo" id="evol-marker" style="left:80%;"></div>
+    </div>
+    <div class="evol-labels">
+      <span>0 €</span>
+      <span id="evol-lbl-mid"></span>
+      <span id="evol-lbl-max"></span>
+    </div>
+    <div style="font-size:10px; color:var(--texto3); margin-top:8px; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;">Días trabajados este mes</div>
+    <div class="dias-dots" id="dias-dots"></div>
+  </div>
+</div>
+
+<!-- AÑADIR DÍA -->
+<div class="section" style="padding-top:16px;">
+  <div class="sec-title">Registrar jornada</div>
+  <div class="add-dia-card">
+    <div class="add-row">
+      <span class="add-lbl">Fecha</span>
+      <input class="add-inp-date" type="date" id="inp-fecha">
+    </div>
+    <div class="add-row">
+      <span class="add-lbl">Ingresado</span>
+      <input class="add-inp" type="number" id="inp-importe" placeholder="0 €" min="0" step="1">
+    </div>
+    <button class="btn-add" onclick="addDia()">+ Añadir jornada</button>
+  </div>
+</div>
+
+<!-- EXCEDENTE -->
+<div class="section" style="padding-top:4px;">
+  <div class="sec-title">Excedente personal</div>
+  <div id="exc-card"></div>
+</div>
+
+<!-- HISTORIAL -->
+<div class="section" style="padding-top:4px;">
+  <div class="sec-title">Historial de jornadas</div>
+  <div class="hist-card" id="hist-list"></div>
+</div>
+
+<!-- CONFIG -->
+<div class="section" style="padding-top:4px;">
+  <div class="sec-title">Configuración</div>
+  <div class="config-panel" id="cfg-panel">
+    <div class="cfg-row"><span class="cfg-lbl">Objetivo €/día</span><input class="cfg-inp" type="number" id="cfg-obj" value="215" min="0"></div>
+    <div class="cfg-row"><span class="cfg-lbl">Días/mes</span><input class="cfg-inp" type="number" id="cfg-dias" value="19" min="1" max="31"></div>
+    <div class="cfg-row"><span class="cfg-lbl">Gastos fijos/mes</span><input class="cfg-inp" type="number" id="cfg-fijos" value="1151" min="0"></div>
+    <div class="cfg-row"><span class="cfg-lbl">Deudas/mes</span><input class="cfg-inp" type="number" id="cfg-deudas" value="961" min="0"></div>
+    <div class="cfg-row"><span class="cfg-lbl">Negocio taxi/mes</span><input class="cfg-inp" type="number" id="cfg-laboral" value="986" min="0"></div>
+    <div class="cfg-row"><span class="cfg-lbl">Fondo emergencia/mes</span><input class="cfg-inp" type="number" id="cfg-emerg" value="200" min="0"></div>
+    <div class="cfg-row"><span class="cfg-lbl">Vacaciones/mes</span><input class="cfg-inp" type="number" id="cfg-vac" value="250" min="0"></div>
+    <div class="cfg-row"><span class="cfg-lbl">Ahorro/mes</span><input class="cfg-inp" type="number" id="cfg-ahorro" value="200" min="0"></div>
+    <div class="cfg-row"><span class="cfg-lbl">Ocio/mes</span><input class="cfg-inp" type="number" id="cfg-ocio" value="300" min="0"></div>
+    <button class="btn-cfg-save" onclick="saveConfig()">Guardar configuración</button>
+  </div>
+</div>
+
+<button class="fab" onclick="if(confirm('¿Borrar todos los días de este mes?')){borrarMes();}">↺ Reiniciar mes</button>
+
+<script>
+const SEGS_DEF = [
+  { id:'fijos',   nombre:'Gastos fijos',    icon:'🏠', cls:'s-fijos',   key:'cfg-fijos',   mes:1151 },
+  { id:'laboral', nombre:'Negocio taxi',     icon:'🚕', cls:'s-laboral', key:'cfg-laboral', mes:986  },
+  { id:'deudas',  nombre:'Deudas',           icon:'💳', cls:'s-deudas',  key:'cfg-deudas',  mes:961  },
+  { id:'ahorro',  nombre:'Ahorro',           icon:'💰', cls:'s-ahorro',  key:'cfg-ahorro',  mes:200  },
+  { id:'vac',     nombre:'Vacaciones',       icon:'✈️', cls:'s-vac',     key:'cfg-vac',     mes:250  },
+  { id:'ocio',    nombre:'Ocio',             icon:'🍽️', cls:'s-ocio',    key:'cfg-ocio',    mes:300  },
+];
+
+let mesActual = '';
+let dias = []; // [{fecha, importe}]
+let config = {};
+
+function loadConfig() {
+  try {
+    const raw = localStorage.getItem('ale_config');
+    if (raw) config = JSON.parse(raw);
+  } catch(e) {}
+  config.objetivo = config.objetivo || 215;
+  config.diasMes  = config.diasMes  || 19;
+  config.fijos    = config.fijos    || 1151;
+  config.deudas   = config.deudas   || 961;
+  config.laboral  = config.laboral  || 986;
+  config.emerg    = config.emerg    || 200;
+  config.vac      = config.vac      || 250;
+  config.ahorro   = config.ahorro   || 200;
+  config.ocio     = config.ocio     || 300;
+}
+
+function saveConfig() {
+  config.objetivo = parseFloat(document.getElementById('cfg-obj').value)    || 215;
+  config.diasMes  = parseInt(document.getElementById('cfg-dias').value)     || 19;
+  config.fijos    = parseFloat(document.getElementById('cfg-fijos').value)  || 1151;
+  config.deudas   = parseFloat(document.getElementById('cfg-deudas').value) || 961;
+  config.laboral  = parseFloat(document.getElementById('cfg-laboral').value)|| 986;
+  config.emerg    = parseFloat(document.getElementById('cfg-emerg').value)  || 200;
+  config.vac      = parseFloat(document.getElementById('cfg-vac').value)    || 250;
+  config.ahorro   = parseFloat(document.getElementById('cfg-ahorro').value) || 200;
+  config.ocio     = parseFloat(document.getElementById('cfg-ocio').value)   || 300;
+  try { localStorage.setItem('ale_config', JSON.stringify(config)); } catch(e) {}
+  renderAll();
+}
+
+function loadDias(mes) {
+  try {
+    const raw = localStorage.getItem('ale_dias_' + mes);
+    dias = raw ? JSON.parse(raw) : [];
+  } catch(e) { dias = []; }
+}
+
+function saveDias() {
+  try { localStorage.setItem('ale_dias_' + mesActual, JSON.stringify(dias)); } catch(e) {}
+}
+
+function cambiarMes() {
+  mesActual = document.getElementById('mes-sel').value;
+  loadDias(mesActual);
+  renderAll();
+}
+
+function borrarMes() {
+  dias = [];
+  saveDias();
+  renderAll();
+}
+
+function addDia() {
+  const fecha   = document.getElementById('inp-fecha').value;
+  const importe = parseFloat(document.getElementById('inp-importe').value);
+  if (!fecha || !importe || importe <= 0) return;
+  const exists = dias.findIndex(d => d.fecha === fecha);
+  if (exists >= 0) {
+    if (!confirm('Ya hay una jornada para ese día. ¿Reemplazar?')) return;
+    dias[exists].importe = importe;
+  } else {
+    dias.push({ fecha, importe });
+    dias.sort((a,b) => a.fecha.localeCompare(b.fecha));
+  }
+  saveDias();
+  document.getElementById('inp-importe').value = '';
+  renderAll();
+}
+
+function delDia(fecha) {
+  dias = dias.filter(d => d.fecha !== fecha);
+  saveDias();
+  renderAll();
+}
+
+function fmt(n) { return Math.round(n).toLocaleString('es-ES') + ' €'; }
+function fmtFecha(iso) {
+  const [,m,d] = iso.split('-');
+  return d + '/' + m;
+}
+function totalIngresado() { return dias.reduce((s,d) => s + d.importe, 0); }
+function totalObjetivo() { return config.objetivo * config.diasMes; }
+function totalObligaciones() {
+  return config.fijos + config.deudas + config.laboral + config.emerg + config.vac + config.ahorro + config.ocio;
+}
+
+function renderHeader() {
+  const total = totalIngresado();
+  const objMes = totalObjetivo();
+  const pct = objMes > 0 ? Math.min(1, total / objMes) : 0;
+  const circum = 226;
+
+  document.getElementById('hdr-ring').style.strokeDashoffset = circum - pct * circum;
+  document.getElementById('hdr-ring').style.stroke = pct >= 1 ? '#4B91F7' : pct >= 0.7 ? '#00D084' : '#FFB800';
+  document.getElementById('hdr-ring-pct').textContent = Math.round(pct * 100) + '%';
+  document.getElementById('hdr-obj').textContent = fmt(config.objetivo);
+  document.getElementById('hdr-dias').textContent = dias.length + ' / ' + config.diasMes;
+  const media = dias.length > 0 ? total / dias.length : 0;
+  document.getElementById('hdr-media').textContent = dias.length > 0 ? fmt(media) : '— €';
+  document.getElementById('hdr-media').style.color = media >= config.objetivo ? 'var(--verde)' : media > 0 ? 'var(--amarillo)' : 'var(--texto2)';
+  const barPct = Math.min(100, pct * 100);
+  const barColor = pct >= 1 ? 'var(--azul)' : pct >= 0.7 ? 'var(--verde)' : 'var(--amarillo)';
+  document.getElementById('hdr-bar').style.width = barPct + '%';
+  document.getElementById('hdr-bar').style.background = barColor;
+}
+
+function renderSegs() {
+  const segs = [
+    { nombre:'Gastos fijos',  icon:'🏠', cls:'s-fijos',   mes: config.fijos },
+    { nombre:'Negocio taxi',  icon:'🚕', cls:'s-laboral', mes: config.laboral },
+    { nombre:'Deudas',        icon:'💳', cls:'s-deudas',  mes: config.deudas },
+    { nombre:'Ahorro',        icon:'💰', cls:'s-ahorro',  mes: config.ahorro },
+    { nombre:'Vacaciones',    icon:'✈', cls:'s-vac',     mes: config.vac },
+    { nombre:'Ocio',          icon:'🍽', cls:'s-ocio',    mes: config.ocio },
+  ];
+  const totalObl = totalObligaciones();
+  const grid = document.getElementById('seg-grid');
+  grid.innerHTML = '';
+  segs.forEach(s => {
+    const dia = s.mes / config.diasMes;
+    const pctBar = Math.round((s.mes / totalObl) * 100);
+    const div = document.createElement('div');
+    div.className = 'seg-card ' + s.cls;
+    div.innerHTML = `
+      <div class="seg-icon">${s.icon}</div>
+      <div class="seg-name">${s.nombre}</div>
+      <div class="seg-dia">${Math.round(dia)} €</div>
+      <div class="seg-mes">${fmt(s.mes)} / mes</div>
+      <div class="seg-bar"><div class="seg-bar-fill" style="width:${pctBar}%;"></div></div>
+    `;
+    grid.appendChild(div);
+  });
+}
+
+function renderEvol() {
+  const total = totalIngresado();
+  const objMes = totalObjetivo();
+  const maxBar = Math.max(objMes * 1.2, total * 1.1, 1);
+  const pct = Math.min(100, (total / maxBar) * 100);
+  const objPct = Math.min(98, (objMes / maxBar) * 100);
+  const barColor = total >= objMes ? 'var(--azul)' : total >= objMes * 0.7 ? 'var(--verde)' : 'var(--amarillo)';
+
+  document.getElementById('evol-total').textContent = fmt(total);
+  document.getElementById('evol-obj-mes').textContent = fmt(objMes);
+  document.getElementById('evol-bar').style.width = pct + '%';
+  document.getElementById('evol-bar').style.background = barColor;
+  document.getElementById('evol-marker').style.left = objPct + '%';
+  document.getElementById('evol-lbl-mid').textContent = fmt(objMes / 2);
+  document.getElementById('evol-lbl-max').textContent = fmt(Math.round(maxBar));
+
+  // dots
+  const dotsEl = document.getElementById('dias-dots');
+  dotsEl.innerHTML = '';
+  const hoy = new Date().toISOString().slice(0,10);
+
+  for (let i = 1; i <= config.diasMes; i++) {
+    const reg = dias[i-1];
+    const dot = document.createElement('div');
+    const isHoy = reg && reg.fecha === hoy;
+    let cls = 'dia-dot vacio';
+    let title = 'Día ' + i;
+    if (i <= dias.length) {
+      const d = dias[i-1];
+      if (d.importe >= config.objetivo * 1.05) { cls = 'dia-dot alto'; }
+      else if (d.importe >= config.objetivo * 0.9) { cls = 'dia-dot ok'; }
+      else { cls = 'dia-dot bajo'; }
+      title = fmtFecha(d.fecha) + ': ' + fmt(d.importe);
+    }
+    if (isHoy) cls += ' hoy';
+    dot.className = cls;
+    dot.textContent = i;
+    dot.title = title;
+    dotsEl.appendChild(dot);
+  }
+}
+
+function renderExcedente() {
+  const total = totalIngresado();
+  const oblMes = totalObligaciones();
+  const exc = total - oblMes;
+  const card = document.getElementById('exc-card');
+  const isOk = exc >= 0;
+
+  card.innerHTML = `
+    <div class="excedente-card ${isOk ? 'exc-bg-ok' : 'exc-bg-bad'}">
+      <div class="exc-label ${isOk ? 'exc-label-ok' : 'exc-label-bad'}">${isOk ? '✦ Excedente personal' : '⚠ Déficit'}</div>
+      <div class="exc-amount ${isOk ? 'exc-amount-ok' : 'exc-amount-bad'}">${isOk ? '' : '-'}${fmt(Math.abs(exc))}</div>
+      <div class="exc-sub">${isOk
+        ? 'Libre para ti. Puedes ahorrarlo, invertirlo o gastarlo.'
+        : 'Faltan ' + fmt(Math.abs(exc)) + ' para cubrir todas las obligaciones del mes.'
+      }</div>
+      <div class="exc-desglose">
+        <div class="exc-row"><span>Total ingresado</span><span style="color:var(--verde);">${fmt(total)}</span></div>
+        <div class="exc-row"><span>Total obligaciones</span><span>${fmt(oblMes)}</span></div>
+        <div class="exc-row"><span>Días trabajados</span><span>${dias.length} de ${config.diasMes}</span></div>
+        <div class="exc-row"><span>Faltan ${config.diasMes - dias.length} días × ${fmt(config.objetivo)}</span><span style="color:var(--texto3);">${fmt((config.diasMes - dias.length) * config.objetivo)} potencial</span></div>
+      </div>
+    </div>
+  `;
+}
+
+function renderHist() {
+  const list = document.getElementById('hist-list');
+  if (dias.length === 0) {
+    list.innerHTML = '<div class="hist-empty">Sin jornadas registradas</div>';
+    return;
+  }
+  list.innerHTML = [...dias].reverse().map(d => {
+    const diff = d.importe - config.objetivo;
+    const diffCls = diff >= config.objetivo * 0.05 ? 'hist-diff-ok' : diff < -config.objetivo * 0.1 ? 'hist-diff-bad' : 'hist-diff-neu';
+    const diffLabel = (diff >= 0 ? '+' : '') + Math.round(diff) + ' €';
+    return `<div class="hist-item">
+      <span class="hist-fecha">${fmtFecha(d.fecha)}</span>
+      <span class="hist-importe" style="color:${d.importe >= config.objetivo ? 'var(--verde)' : 'var(--amarillo)'};">${fmt(d.importe)}</span>
+      <span class="hist-diff ${diffCls}">${diffLabel}</span>
+      <button class="hist-del" onclick="delDia('${d.fecha}')">×</button>
+    </div>`;
+  }).join('');
+}
+
+function fillConfigInputs() {
+  document.getElementById('cfg-obj').value     = config.objetivo;
+  document.getElementById('cfg-dias').value    = config.diasMes;
+  document.getElementById('cfg-fijos').value   = config.fijos;
+  document.getElementById('cfg-deudas').value  = config.deudas;
+  document.getElementById('cfg-laboral').value = config.laboral;
+  document.getElementById('cfg-emerg').value   = config.emerg;
+  document.getElementById('cfg-vac').value     = config.vac;
+  document.getElementById('cfg-ahorro').value  = config.ahorro;
+  document.getElementById('cfg-ocio').value    = config.ocio;
+}
+
+function renderAll() {
+  fillConfigInputs();
+  renderHeader();
+  renderSegs();
+  renderEvol();
+  renderExcedente();
+  renderHist();
+}
+
+// Fecha de hoy por defecto
+const hoyISO = new Date().toISOString().slice(0,10);
+document.getElementById('inp-fecha').value = hoyISO;
+
+// Mes actual
+const now = new Date();
+const mesInit = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0');
+const sel = document.getElementById('mes-sel');
+for (let o of sel.options) { if (o.value === mesInit) { sel.value = mesInit; break; } }
+mesActual = sel.value;
+
+loadConfig();
+loadDias(mesActual);
+renderAll();
+
+// Enter en importe
+document.getElementById('inp-importe').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addDia();
+});
+</script>
+</body>
+</html>
