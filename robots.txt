@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /gastos-irina.html
+Disallow: /alejandro-ingresos.html
