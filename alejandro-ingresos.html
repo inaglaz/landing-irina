@@ -166,6 +166,10 @@ body {
 .s-ocio .seg-dia { color: var(--rojo); }
 .s-ocio .seg-bar-fill { background: var(--rojo); }
 
+.s-emerg::before { background: #06B6D4; }
+.s-emerg .seg-dia { color: #06B6D4; }
+.s-emerg .seg-bar-fill { background: #06B6D4; }
+
 /* ── BARRA EVOLUTIVA ── */
 .evol-card {
   background: var(--card);
@@ -657,12 +661,13 @@ function renderHeader() {
 
 function renderSegs() {
   const segs = [
-    { nombre:'Gastos fijos',  icon:'🏠', cls:'s-fijos',   mes: config.fijos },
-    { nombre:'Negocio taxi',  icon:'🚕', cls:'s-laboral', mes: config.laboral },
-    { nombre:'Deudas',        icon:'💳', cls:'s-deudas',  mes: config.deudas },
-    { nombre:'Ahorro',        icon:'💰', cls:'s-ahorro',  mes: config.ahorro },
-    { nombre:'Vacaciones',    icon:'✈', cls:'s-vac',     mes: config.vac },
-    { nombre:'Ocio',          icon:'🍽', cls:'s-ocio',    mes: config.ocio },
+    { nombre:'Gastos fijos',     icon:'🏠', cls:'s-fijos',   mes: config.fijos },
+    { nombre:'Negocio taxi',     icon:'🚕', cls:'s-laboral', mes: config.laboral },
+    { nombre:'Deudas',           icon:'💳', cls:'s-deudas',  mes: config.deudas },
+    { nombre:'F. emergencia',    icon:'🛡', cls:'s-emerg',   mes: config.emerg },
+    { nombre:'Vacaciones',       icon:'✈', cls:'s-vac',     mes: config.vac },
+    { nombre:'Ahorro',           icon:'💰', cls:'s-ahorro',  mes: config.ahorro },
+    { nombre:'Ocio',             icon:'🍽', cls:'s-ocio',    mes: config.ocio },
   ];
   const totalObl = totalObligaciones();
   const grid = document.getElementById('seg-grid');
@@ -672,6 +677,12 @@ function renderSegs() {
     const pctBar = Math.round((s.mes / totalObl) * 100);
     const div = document.createElement('div');
     div.className = 'seg-card ' + s.cls;
+    if (i === segs.length - 1 && segs.length % 2 !== 0) {
+      div.style.gridColumn = '1 / -1';
+      div.style.maxWidth = '50%';
+      div.style.margin = '0 auto';
+      div.style.width = '100%';
+    }
     div.innerHTML = `
       <div class="seg-icon">${s.icon}</div>
       <div class="seg-name">${s.nombre}</div>
